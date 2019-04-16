@@ -20,3 +20,35 @@ int jugador::apostar(int subida){
     apuesta = apuesta + subida;
     return subida;
 }
+
+void jugador::obtenercartas(jugador player1, jugador player2){
+    bool comprobacion = true;
+    int aux = 1+rand()%52;
+    while (comprobacion){
+        if (player1.cartas[0] != aux && player1.cartas[1] != aux && player2.cartas[0] != aux && player2.cartas[1] != aux){
+            comprobacion = false;
+        }
+    }
+    cartas[0] = aux;
+    comprobacion = true;
+    aux = 1+rand()%52;
+    while (comprobacion){
+        if (player1.cartas[0] != aux && player1.cartas[1] != aux && player2.cartas[0] != aux && player2.cartas[1] != aux && cartas[0] != aux){
+            comprobacion = false;
+        }
+    }
+    cartas[1] = aux;
+}
+
+int jugador::devolverdinero(){
+    return dinero;
+}
+
+int jugador::devolverapuesta(){
+    return apuesta;
+}
+
+QString jugador::devolvernombre(){
+    return nombre;
+}
+
