@@ -1,7 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "jugador.h"
-#include "juego.h"
 
 using namespace std;
 
@@ -34,19 +32,12 @@ void MainWindow::on_nombre3_textChanged(const QString &arg1)
 
 void MainWindow::openjuego()
 {
-    juegowindow = new juego();
+    juegowindow = new juego(nombre1, nombre2, nombre3);
     juegowindow->show();
 
 }
 
 void MainWindow::on_comenzar_clicked()
 {
-    jugador jugador1;
-    jugador jugador2;
-    jugador jugador3;
-    jugador1.nombrar(nombre1);
-    jugador2.nombrar(nombre2);
-    jugador3.nombrar(nombre3);
     openjuego();
-
 }
