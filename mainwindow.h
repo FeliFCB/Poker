@@ -16,6 +16,9 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    QString nombre1;
+    QString nombre2;
+    QString nombre3;
 
 public slots:
     void openjuego();
@@ -33,9 +36,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     juego *juegowindow;
-    QString nombre1;
-    QString nombre2;
-    QString nombre3;
 };
 
 #endif // MAINWINDOW_H
+
