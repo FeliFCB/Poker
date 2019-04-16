@@ -1,5 +1,6 @@
 #ifndef JUGADOR_H
 #define JUGADOR_H
+#include <iostream>
 #include <vector>
 #include <QString>
 
@@ -11,14 +12,19 @@ public:
     jugador();
     void nombrar(QString nuevonombre);
     int apostar(int subida);
+    vector <int> cartas{2};
+    void obtenercartas(jugador player1, jugador player2);
+    int devolverdinero();
+    int devolverapuesta();
+    QString devolvernombre();
 
 private:
     QString nombre;
     int dinero;
-    vector <int> cartas;
     int apuesta;
     bool eliminado;
 
 };
 
 #endif // JUGADOR_H
+
