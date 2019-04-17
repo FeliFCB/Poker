@@ -9,7 +9,7 @@ juego::juego(QString nombre1, QString nombre2, QString nombre3, QWidget *parent)
     ui(new Ui::juego)
 {
     ui->setupUi(this);
-    QMessageBox::information(this, "Mensaje", "Pasadle el ordenador al primer jugador");
+    QMessageBox::information(this,"Mensaje",QString("Pasadle el ordenador a %1").arg(nombre1));
     ui->tu_apuesta->setReadOnly(true);
     ui->tu_dinero->setReadOnly(true);
     ui->bote_actual->setReadOnly(true);
