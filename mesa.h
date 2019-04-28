@@ -6,7 +6,8 @@
 
 using namespace std;
 
-class mesa
+
+class mesa: public cartastipo
 {
 public:
     mesa();
@@ -17,10 +18,13 @@ public:
     int devolverbote();
     int devolverturno();
     int sumarturno();
+    void numeroytipocartas();
     bool nuevafase;
     int fase;
     int jugada;
-    vector <int> cartas{5};
+    vector < int> cartas{5};
+    vector <int> numerocartas{5};
+    vector <QString> tipocartas{5};
 private:
     int turno;
     int bote;

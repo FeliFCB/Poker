@@ -1,13 +1,21 @@
 #ifndef JUGADOR_H
 #define JUGADOR_H
+
 #include <iostream>
 #include <vector>
 #include <QString>
 #include <time.h>
 
 using namespace std;
+class cartastipo{
+public:
+    int numero;
+    QString tipo;
+    void infodecarta(int a);
 
-class jugador{
+};
+class jugador:public cartastipo
+{
 
 public:
     jugador();
@@ -19,6 +27,10 @@ public:
     int devolverapuesta();
     QString devolvernombre();
     bool devolvereliminado();
+    void numeroytipocartas();
+    vector <int> numerocartas{2};
+    vector <QString> tipocartas{2};
+
 
 private:
     QString nombre;

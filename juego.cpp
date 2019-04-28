@@ -965,7 +965,9 @@ void juego::turnosiguiente(){
         case 4:
             mesa1.repartir5();
             mostrar5(mesa1.cartas[4]);
+            mesa1.numeroytipocartas();
             break;
+
         }
     }
 }
@@ -1016,17 +1018,20 @@ void juego::on_pasar_clicked()
 {
     switch (mesa1.devolverturno()) {
     case 2:
+        jugador2.numeroytipocartas();
             ui->mano1->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
             ui->mano2->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
             turnosiguiente();
 
         break;
     case 3:
+         jugador3.numeroytipocartas();
             ui->mano1->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
             ui->mano2->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
             turnosiguiente();
         break;
     default:
+ jugador1.numeroytipocartas();
             ui->mano1->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
             ui->mano2->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
             turnosiguiente();
