@@ -9,8 +9,8 @@ juego::juego(QString nombre1, QString nombre2, QString nombre3, QWidget *parent)
     QMainWindow(parent),
     ui(new Ui::juego)
 {
-    QMessageBox::information(this,"Mensaje",QString("Pasadle el ordenador a %1").arg(nombre1));
     ui->setupUi(this);
+    QMessageBox::information(this,"Mensaje",QString("Pasadle el ordenador a %1").arg(nombre1));  
     ui->tu_apuesta->setReadOnly(true);
     ui->tu_dinero->setReadOnly(true);
     ui->bote_actual->setReadOnly(true);
@@ -979,6 +979,8 @@ void juego::on_apostar_clicked()
             QMessageBox::information(this, "Mensaje", "La apuesta minima es " + QString::number(max(jugador1.devolverapuesta(), jugador3.devolverapuesta())) + "€");
         }
         else{
+            ui->mano1->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
+            ui->mano2->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
             jugador2.apostar(ui->apuesta->text().toInt());
             mesa1.actualizarbote();
             turnosiguiente();
@@ -989,6 +991,7 @@ void juego::on_apostar_clicked()
             QMessageBox::information(this, "Mensaje", "La apuesta minima es " + QString::number(max(jugador1.devolverapuesta(), jugador2.devolverapuesta())) + "€");
         }
         else{
+
             jugador3.apostar(ui->apuesta->text().toInt());
             mesa1.actualizarbote();
             turnosiguiente();
@@ -1001,6 +1004,8 @@ void juego::on_apostar_clicked()
         else{
             jugador1.apostar(ui->apuesta->text().toInt());
             mesa1.actualizarbote();
+            ui->mano1->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
+            ui->mano2->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
             turnosiguiente();
         }
         break;
@@ -1009,5 +1014,24 @@ void juego::on_apostar_clicked()
 
 void juego::on_pasar_clicked()
 {
+    switch (mesa1.devolverturno()) {
+    case 2:
+            ui->mano1->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
+            ui->mano2->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
+            turnosiguiente();
+
+        break;
+    case 3:
+            ui->mano1->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
+            ui->mano2->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
+            turnosiguiente();
+        break;
+    default:
+            ui->mano1->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
+            ui->mano2->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
+            turnosiguiente();
+        break;
+    }
 
 }
+
