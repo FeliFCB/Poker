@@ -10,14 +10,20 @@ class mesa
 {
 public:
     mesa();
-    void sumarbote(int apuesta, jugador player);
-    void repartir123(jugador player1, jugador player2, jugador player3);
-    void repartir4(jugador player1, jugador player2, jugador player3);
-    void repartir5(jugador player1, jugador player2, jugador player3);
+    void actualizarbote();
+    void repartir123();
+    void repartir4();
+    void repartir5();
     int devolverbote();
-private:
-    int bote = 0;
+    int devolverturno();
+    int sumarturno();
+    bool nuevafase;
+    int fase;
+    int jugada;
     vector <int> cartas{5};
+private:
+    int turno;
+    int bote;
 };
 
 #endif // MESA_H

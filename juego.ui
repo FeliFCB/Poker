@@ -66,7 +66,7 @@ color: rgb(255, 255, 255);</string>
      <string> Tu dinero</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="retirarse">
     <property name="geometry">
      <rect>
       <x>660</x>
@@ -82,7 +82,7 @@ color: rgb(255, 255, 255);</string>
      <string>Retirarse</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="pasar">
     <property name="geometry">
      <rect>
       <x>660</x>
@@ -98,7 +98,7 @@ color: rgb(255, 255, 255);</string>
      <string>Pasar</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="apostar">
     <property name="geometry">
      <rect>
       <x>660</x>
@@ -246,7 +246,7 @@ color: rgb(255, 255, 255);</string>
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="mesa1_2">
+   <widget class="QLabel" name="mesa2">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -265,7 +265,7 @@ color: rgb(255, 255, 255);</string>
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="mesa1_3">
+   <widget class="QLabel" name="mesa3">
     <property name="geometry">
      <rect>
       <x>350</x>
@@ -284,7 +284,7 @@ color: rgb(255, 255, 255);</string>
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="mesa1_4">
+   <widget class="QLabel" name="mesa4">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -303,7 +303,7 @@ color: rgb(255, 255, 255);</string>
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="mesa1_5">
+   <widget class="QLabel" name="mesa5">
     <property name="geometry">
      <rect>
       <x>630</x>
@@ -329,7 +329,7 @@ color: rgb(255, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>

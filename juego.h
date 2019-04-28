@@ -4,6 +4,10 @@
 #include <QMainWindow>
 #include <mesa.h>
 #include <QTextEdit>
+extern jugador jugador1;
+extern jugador jugador2;
+extern jugador jugador3;
+extern mesa mesa1;
 
 namespace Ui {
 class juego;
@@ -16,12 +20,20 @@ class juego : public QMainWindow
 public:
     explicit juego(QString nombre1, QString nombre2, QString nombre3, QWidget *parent = nullptr);
     ~juego();
-    void turnoinicial(mesa table, jugador player1, jugador player2, jugador player3);
+    void turnoinicial();
     void mostrarmano(int carta1, int carta2);
+    void mostrar123(int carta1, int carta2, int carta3);
+    void mostrar4(int carta);
+    void mostrar5(int carta);
+    void turnosiguiente();
+
+private slots:
+    void on_apostar_clicked();
+
+    void on_pasar_clicked();
 
 private:
     Ui::juego *ui;
-    int jugada = 1;
 };
 
 #endif // JUEGO_H
