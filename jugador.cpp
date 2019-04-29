@@ -10,6 +10,8 @@ jugador::jugador(){
     dinero = 5000;
     apuesta = 0;
     eliminado = false;
+    cartas[0] = 0;
+    cartas[1] = 0;
 }
 
 
@@ -23,7 +25,10 @@ int jugador::apostar(int subida){
     return subida;
 }
 
-void jugador::obtenercartas(jugador player1, jugador player2){
+void jugador::obtenercartas(int carta1, int carta2, int carta3, int carta4){
+    qDebug("LOS OTROS 2 JUGADORES:");
+    qDebug("Primer jugador: %d    %d", carta1, carta2);
+    qDebug("Segundo jugador: %d    %d", carta3, carta4);
     srand(time(NULL));
     vector <char[30]> imagenes{2};
     bool comprobacion = true;
@@ -31,7 +36,7 @@ void jugador::obtenercartas(jugador player1, jugador player2){
     while (comprobacion){
         aux = 1+rand()%52;
 
-        if (player1.cartas[0] != aux && player1.cartas[1] != aux && player2.cartas[0] != aux && player2.cartas[1] != aux){
+        if (carta1 != aux && carta2 != aux && carta3 != aux && carta4 != aux){
             comprobacion = false;
         }
     }
@@ -39,11 +44,13 @@ void jugador::obtenercartas(jugador player1, jugador player2){
     comprobacion = true;
     while (comprobacion){
         aux = 1+rand()%52;
-        if (player1.cartas[0] != aux && player1.cartas[1] != aux && player2.cartas[0] != aux && player2.cartas[1] != aux && cartas[0] != aux){
+        if (carta1 != aux && carta2 != aux && carta3 != aux && carta4 != aux && cartas[0] != aux){
             comprobacion = false;
         }
     }
     cartas[1] = aux;
+    qDebug("EL JUGADOR RECIBE: %d    %d", cartas[0], cartas[1]);
+    qDebug("------------------");
 }
 
 int jugador::devolverdinero(){
@@ -62,22 +69,8 @@ bool jugador::devolvereliminado(){
     return eliminado;
 }
 
-void cartastipo::infodecarta(int a){
-    if(a<14){
-        numero=a;
-        tipo="corazones";
-    }else if (a<27) {
-        numero=a-13;
-        tipo="picas";
-    }else if (a<40) {
-        numero=a-26;
-        tipo="diamantes";
-    }else if (a<53) {
-        numero=a-39;
-        tipo="treboles";
-    }
 
-}
+
 void jugador::numeroytipocartas(){
  int aux=cartas[1];
 

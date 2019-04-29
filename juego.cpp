@@ -28,8 +28,8 @@ juego::~juego()
 
 void juego::turnoinicial(){
     if (jugador1.devolvereliminado()){
-        jugador2.obtenercartas(jugador1,jugador3);
-        jugador3.obtenercartas(jugador1,jugador2);
+        jugador2.obtenercartas(jugador1.cartas[0], jugador1.cartas[1], jugador3.cartas[0], jugador3.cartas[1]);
+        jugador3.obtenercartas(jugador1.cartas[0], jugador1.cartas[1], jugador2.cartas[0], jugador2.cartas[1]);
         if (mesa1.jugada == 3){
             jugador3.apostar(25);
             jugador2.apostar(50);
@@ -54,8 +54,8 @@ void juego::turnoinicial(){
         }
     }
     else if (jugador2.devolvereliminado()){
-        jugador1.obtenercartas(jugador2,jugador3);
-        jugador3.obtenercartas(jugador1,jugador2);
+        jugador1.obtenercartas(jugador2.cartas[0], jugador2.cartas[1], jugador3.cartas[0], jugador3.cartas[1]);
+        jugador3.obtenercartas(jugador1.cartas[0], jugador1.cartas[1], jugador2.cartas[0], jugador2.cartas[1]);
         if (mesa1.jugada == 1){
             jugador1.apostar(25);
             jugador3.apostar(50);
@@ -80,8 +80,8 @@ void juego::turnoinicial(){
         }
     }
     else if (jugador3.devolvereliminado()){
-        jugador1.obtenercartas(jugador2,jugador3);
-        jugador2.obtenercartas(jugador1,jugador3);
+        jugador1.obtenercartas(jugador2.cartas[0], jugador2.cartas[1], jugador3.cartas[0], jugador3.cartas[1]);
+        jugador2.obtenercartas(jugador1.cartas[0], jugador1.cartas[1], jugador3.cartas[0], jugador3.cartas[1]);
         if (mesa1.jugada == 2){
             jugador2.apostar(25);
             jugador1.apostar(50);
@@ -106,9 +106,9 @@ void juego::turnoinicial(){
         }
     }
     else {
-        jugador1.obtenercartas(jugador2,jugador3);
-        jugador2.obtenercartas(jugador1,jugador3);
-        jugador3.obtenercartas(jugador1,jugador2);
+        jugador1.obtenercartas(jugador2.cartas[0], jugador2.cartas[1], jugador3.cartas[0], jugador3.cartas[1]);
+        jugador2.obtenercartas(jugador1.cartas[0], jugador1.cartas[1], jugador3.cartas[0], jugador3.cartas[1]);
+        jugador3.obtenercartas(jugador1.cartas[0], jugador1.cartas[1], jugador2.cartas[0], jugador2.cartas[1]);
         if (mesa1.jugada == 3){
             jugador1.apostar(25);
             jugador2.apostar(50);
@@ -925,6 +925,8 @@ void juego::mostrar5(int carta){
 void juego::turnosiguiente(){
     int turno = mesa1.sumarturno();
     ui->apuesta->clear();
+    ui->mano1->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
+    ui->mano2->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
     switch (turno) {
     case 1:
         QMessageBox::information(this,"Mensaje","Pasadle el ordenador a " + jugador1.devolvernombre());
@@ -981,8 +983,6 @@ void juego::on_apostar_clicked()
             QMessageBox::information(this, "Mensaje", "La apuesta minima es " + QString::number(max(jugador1.devolverapuesta(), jugador3.devolverapuesta())) + "€");
         }
         else{
-            ui->mano1->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
-            ui->mano2->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
             jugador2.apostar(ui->apuesta->text().toInt());
             mesa1.actualizarbote();
             turnosiguiente();
@@ -1006,8 +1006,6 @@ void juego::on_apostar_clicked()
         else{
             jugador1.apostar(ui->apuesta->text().toInt());
             mesa1.actualizarbote();
-            ui->mano1->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
-            ui->mano2->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
             turnosiguiente();
         }
         break;

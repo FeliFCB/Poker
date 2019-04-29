@@ -5,15 +5,10 @@
 #include <vector>
 #include <QString>
 #include <time.h>
+#include <cartastipo.h>
 
 using namespace std;
-class cartastipo{
-public:
-    int numero;
-    QString tipo;
-    void infodecarta(int a);
 
-};
 class jugador:public cartastipo
 {
 
@@ -22,7 +17,7 @@ public:
     void nombrar(QString nuevonombre);
     int apostar(int subida);
     vector <int> cartas{2};
-    void obtenercartas(jugador player1, jugador player2);
+    void obtenercartas(int carta1, int carta2, int carta3, int carta4);
     int devolverdinero();
     int devolverapuesta();
     QString devolvernombre();
