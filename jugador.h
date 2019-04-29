@@ -22,6 +22,8 @@ public:
     int devolverapuesta();
     QString devolvernombre();
     bool devolvereliminado();
+    bool devolverretirado();
+    void retirarse();
     void numeroytipocartas();
     vector <int> numerocartas{2};
     vector <QString> tipocartas{2};
@@ -32,6 +34,7 @@ private:
     int dinero;
     int apuesta;
     bool eliminado;
+    bool retirado;
 
 };
 

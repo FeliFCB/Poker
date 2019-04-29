@@ -32,6 +32,8 @@ private slots:
 
     void on_pasar_clicked();
 
+    void on_retirarse_clicked();
+
 private:
     Ui::juego *ui;
 };

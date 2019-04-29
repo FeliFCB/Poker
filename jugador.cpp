@@ -12,6 +12,7 @@ jugador::jugador(){
     eliminado = false;
     cartas[0] = 0;
     cartas[1] = 0;
+    retirado = false;
 }
 
 
@@ -69,7 +70,13 @@ bool jugador::devolvereliminado(){
     return eliminado;
 }
 
+bool jugador::devolverretirado(){
+    return retirado;
+}
 
+void jugador::retirarse(){
+    retirado = true;
+}
 
 void jugador::numeroytipocartas(){
  int aux=cartas[1];

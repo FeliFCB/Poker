@@ -79,28 +79,46 @@ int mesa::devolverturno(){
 }
 
 int mesa::sumarturno(){
+    nuevafase = false;
     switch (turno) {
     case 2:
-        if (jugador3.devolvereliminado()) turno = 1;
+        if (jugador3.devolverretirado()){
+            turno = 1;
+            if(jugada == 3){
+                fase++;
+                nuevafase = true;
+            }
+        }
         else turno = 3;
         break;
 
     case 3:
-        if (jugador1.devolvereliminado()) turno = 2;
+        if (jugador1.devolverretirado()){
+            turno = 2;
+            if (jugada == 1){
+                fase++;
+                nuevafase = true;
+            }
+        }
         else turno = 1;
         break;
 
     default:
-        if (jugador2.devolvereliminado()) turno = 3;
+        if (jugador2.devolverretirado()){
+            turno = 3;
+            if (jugada == 2){
+                fase++;
+                nuevafase = true;
+            }
+        }
         else turno = 2;
         break;
     }
 
-    if (turno == jugada){
+    if ((turno == jugada) && (jugador1.devolverapuesta() >= max(jugador2.devolverapuesta(), jugador3.devolverapuesta()) || jugador1.devolverretirado()) && (jugador2.devolverapuesta() >= max(jugador1.devolverapuesta(), jugador3.devolverapuesta()) || jugador2.devolverretirado()) && jugador3.devolverapuesta() >= max(jugador1.devolverapuesta(), jugador2.devolverapuesta()) || jugador3.devolverretirado()){
         fase++;
         nuevafase = true;
     }
-    else nuevafase = false;
     return turno;
 }
 
