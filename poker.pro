@@ -29,13 +29,15 @@ SOURCES += \
         mainwindow.cpp \
     jugador.cpp \
     juego.cpp \
-    mesa.cpp
+    mesa.cpp \
+    cartastipo.cpp
 
 HEADERS += \
         mainwindow.h \
     jugador.h \
     juego.h \
-    mesa.h
+    mesa.h \
+    cartastipo.h
 
 FORMS += \
         mainwindow.ui \

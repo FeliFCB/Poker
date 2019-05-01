@@ -15,6 +15,7 @@ juego::juego(QString nombre1, QString nombre2, QString nombre3, QWidget *parent)
     ui->tu_dinero->setReadOnly(true);
     ui->bote_actual->setReadOnly(true);
     ui->nombre->setReadOnly(true);
+    ui->minima->setReadOnly(true);
     jugador1.nombrar(nombre1);
     jugador2.nombrar(nombre2);
     jugador3.nombrar(nombre3);
@@ -28,8 +29,8 @@ juego::~juego()
 
 void juego::turnoinicial(){
     if (jugador1.devolvereliminado()){
-        jugador2.obtenercartas(jugador1,jugador3);
-        jugador3.obtenercartas(jugador1,jugador2);
+        jugador2.obtenercartas(jugador1.cartas[0], jugador1.cartas[1], jugador3.cartas[0], jugador3.cartas[1]);
+        jugador3.obtenercartas(jugador1.cartas[0], jugador1.cartas[1], jugador2.cartas[0], jugador2.cartas[1]);
         if (mesa1.jugada == 3){
             jugador3.apostar(25);
             jugador2.apostar(50);
@@ -38,6 +39,7 @@ void juego::turnoinicial(){
             ui->tu_dinero->setText(QString::number(jugador3.devolverdinero()));
             ui->bote_actual->setText(QString::number(mesa1.devolverbote()));
             ui->nombre->setText(jugador3.devolvernombre());
+            ui->minima->setText(QString::number(max(max(jugador1.devolverapuesta(), jugador2.devolverapuesta()), jugador3.devolverapuesta())));
             mostrarmano(jugador3.cartas[0], jugador3.cartas[1]);
             //mesa1.jugada = 2;
         }
@@ -49,13 +51,14 @@ void juego::turnoinicial(){
             ui->tu_dinero->setText(QString::number(jugador2.devolverdinero()));
             ui->bote_actual->setText(QString::number(mesa1.devolverbote()));
             ui->nombre->setText(jugador2.devolvernombre());
+            ui->minima->setText(QString::number(max(max(jugador1.devolverapuesta(), jugador2.devolverapuesta()), jugador3.devolverapuesta())));
             mostrarmano(jugador2.cartas[0], jugador2.cartas[1]);
             //mesa1.jugada = 3;
         }
     }
     else if (jugador2.devolvereliminado()){
-        jugador1.obtenercartas(jugador2,jugador3);
-        jugador3.obtenercartas(jugador1,jugador2);
+        jugador1.obtenercartas(jugador2.cartas[0], jugador2.cartas[1], jugador3.cartas[0], jugador3.cartas[1]);
+        jugador3.obtenercartas(jugador1.cartas[0], jugador1.cartas[1], jugador2.cartas[0], jugador2.cartas[1]);
         if (mesa1.jugada == 1){
             jugador1.apostar(25);
             jugador3.apostar(50);
@@ -64,6 +67,7 @@ void juego::turnoinicial(){
             ui->tu_dinero->setText(QString::number(jugador1.devolverdinero()));
             ui->bote_actual->setText(QString::number(mesa1.devolverbote()));
             ui->nombre->setText(jugador1.devolvernombre());
+            ui->minima->setText(QString::number(max(max(jugador1.devolverapuesta(), jugador2.devolverapuesta()), jugador3.devolverapuesta())));
             mostrarmano(jugador1.cartas[0], jugador1.cartas[1]);
             //mesa1.jugada = 3;
         }
@@ -75,13 +79,14 @@ void juego::turnoinicial(){
             ui->tu_dinero->setText(QString::number(jugador3.devolverdinero()));
             ui->bote_actual->setText(QString::number(mesa1.devolverbote()));
             ui->nombre->setText(jugador3.devolvernombre());
+            ui->minima->setText(QString::number(max(max(jugador1.devolverapuesta(), jugador2.devolverapuesta()), jugador3.devolverapuesta())));
             mostrarmano(jugador3.cartas[0], jugador3.cartas[1]);
             //mesa1.jugada = 1;
         }
     }
     else if (jugador3.devolvereliminado()){
-        jugador1.obtenercartas(jugador2,jugador3);
-        jugador2.obtenercartas(jugador1,jugador3);
+        jugador1.obtenercartas(jugador2.cartas[0], jugador2.cartas[1], jugador3.cartas[0], jugador3.cartas[1]);
+        jugador2.obtenercartas(jugador1.cartas[0], jugador1.cartas[1], jugador3.cartas[0], jugador3.cartas[1]);
         if (mesa1.jugada == 2){
             jugador2.apostar(25);
             jugador1.apostar(50);
@@ -90,6 +95,7 @@ void juego::turnoinicial(){
             ui->tu_dinero->setText(QString::number(jugador2.devolverdinero()));
             ui->bote_actual->setText(QString::number(mesa1.devolverbote()));
             ui->nombre->setText(jugador2.devolvernombre());
+            ui->minima->setText(QString::number(max(max(jugador1.devolverapuesta(), jugador2.devolverapuesta()), jugador3.devolverapuesta())));
             mostrarmano(jugador2.cartas[0], jugador2.cartas[1]);
             //mesa1.jugada = 1;
         }
@@ -101,14 +107,15 @@ void juego::turnoinicial(){
             ui->tu_dinero->setText(QString::number(jugador1.devolverdinero()));
             ui->bote_actual->setText(QString::number(mesa1.devolverbote()));
             ui->nombre->setText(jugador1.devolvernombre());
+            ui->minima->setText(QString::number(max(max(jugador1.devolverapuesta(), jugador2.devolverapuesta()), jugador3.devolverapuesta())));
             mostrarmano(jugador1.cartas[0], jugador1.cartas[1]);
             //mesa1.jugada = 2;
         }
     }
     else {
-        jugador1.obtenercartas(jugador2,jugador3);
-        jugador2.obtenercartas(jugador1,jugador3);
-        jugador3.obtenercartas(jugador1,jugador2);
+        jugador1.obtenercartas(jugador2.cartas[0], jugador2.cartas[1], jugador3.cartas[0], jugador3.cartas[1]);
+        jugador2.obtenercartas(jugador1.cartas[0], jugador1.cartas[1], jugador3.cartas[0], jugador3.cartas[1]);
+        jugador3.obtenercartas(jugador1.cartas[0], jugador1.cartas[1], jugador2.cartas[0], jugador2.cartas[1]);
         if (mesa1.jugada == 3){
             jugador1.apostar(25);
             jugador2.apostar(50);
@@ -117,6 +124,7 @@ void juego::turnoinicial(){
             ui->tu_dinero->setText(QString::number(jugador3.devolverdinero()));
             ui->bote_actual->setText(QString::number(mesa1.devolverbote()));
             ui->nombre->setText(jugador3.devolvernombre());
+            ui->minima->setText(QString::number(max(max(jugador1.devolverapuesta(), jugador2.devolverapuesta()), jugador3.devolverapuesta())));
             mostrarmano(jugador3.cartas[0], jugador3.cartas[1]);
             //mesa1.jugada = 1;
         }
@@ -128,6 +136,7 @@ void juego::turnoinicial(){
             ui->tu_dinero->setText(QString::number(jugador2.devolverdinero()));
             ui->bote_actual->setText(QString::number(mesa1.devolverbote()));
             ui->nombre->setText(jugador2.devolvernombre());
+            ui->minima->setText(QString::number(max(max(jugador1.devolverapuesta(), jugador2.devolverapuesta()), jugador3.devolverapuesta())));
             mostrarmano(jugador2.cartas[0], jugador2.cartas[1]);
             //mesa1.jugada = 3;
         }
@@ -139,6 +148,7 @@ void juego::turnoinicial(){
             ui->tu_dinero->setText(QString::number(jugador1.devolverdinero()));
             ui->bote_actual->setText(QString::number(mesa1.devolverbote()));
             ui->nombre->setText(jugador1.devolvernombre());
+            ui->minima->setText(QString::number(max(max(jugador1.devolverapuesta(), jugador2.devolverapuesta()), jugador3.devolverapuesta())));
             mostrarmano(jugador1.cartas[0], jugador1.cartas[1]);
             //mesa1.jugada = 2;
         }
@@ -925,6 +935,8 @@ void juego::mostrar5(int carta){
 void juego::turnosiguiente(){
     int turno = mesa1.sumarturno();
     ui->apuesta->clear();
+    ui->mano1->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
+    ui->mano2->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
     switch (turno) {
     case 1:
         QMessageBox::information(this,"Mensaje","Pasadle el ordenador a " + jugador1.devolvernombre());
@@ -932,6 +944,7 @@ void juego::turnosiguiente(){
         ui->tu_dinero->setText(QString::number(jugador1.devolverdinero()));
         ui->bote_actual->setText(QString::number(mesa1.devolverbote()));
         ui->nombre->setText(jugador1.devolvernombre());
+        ui->minima->setText(QString::number(max(max(jugador1.devolverapuesta(), jugador2.devolverapuesta()), jugador3.devolverapuesta())));
         mostrarmano(jugador1.cartas[0], jugador1.cartas[1]);
         break;
     case 2:
@@ -940,6 +953,7 @@ void juego::turnosiguiente(){
         ui->tu_dinero->setText(QString::number(jugador2.devolverdinero()));
         ui->bote_actual->setText(QString::number(mesa1.devolverbote()));
         ui->nombre->setText(jugador2.devolvernombre());
+        ui->minima->setText(QString::number(max(max(jugador1.devolverapuesta(), jugador2.devolverapuesta()), jugador3.devolverapuesta())));
         mostrarmano(jugador2.cartas[0], jugador2.cartas[1]);
         break;
     default:
@@ -948,6 +962,7 @@ void juego::turnosiguiente(){
         ui->tu_dinero->setText(QString::number(jugador3.devolverdinero()));
         ui->bote_actual->setText(QString::number(mesa1.devolverbote()));
         ui->nombre->setText(jugador3.devolvernombre());
+        ui->minima->setText(QString::number(max(max(jugador1.devolverapuesta(), jugador2.devolverapuesta()), jugador3.devolverapuesta())));
         mostrarmano(jugador3.cartas[0], jugador3.cartas[1]);
         break;
 
@@ -965,7 +980,9 @@ void juego::turnosiguiente(){
         case 4:
             mesa1.repartir5();
             mostrar5(mesa1.cartas[4]);
+            mesa1.numeroytipocartas();
             break;
+
         }
     }
 }
@@ -979,8 +996,6 @@ void juego::on_apostar_clicked()
             QMessageBox::information(this, "Mensaje", "La apuesta minima es " + QString::number(max(jugador1.devolverapuesta(), jugador3.devolverapuesta())) + "€");
         }
         else{
-            ui->mano1->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
-            ui->mano2->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
             jugador2.apostar(ui->apuesta->text().toInt());
             mesa1.actualizarbote();
             turnosiguiente();
@@ -1004,8 +1019,6 @@ void juego::on_apostar_clicked()
         else{
             jugador1.apostar(ui->apuesta->text().toInt());
             mesa1.actualizarbote();
-            ui->mano1->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
-            ui->mano2->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
             turnosiguiente();
         }
         break;
@@ -1016,22 +1029,51 @@ void juego::on_pasar_clicked()
 {
     switch (mesa1.devolverturno()) {
     case 2:
-            ui->mano1->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
-            ui->mano2->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
-            turnosiguiente();
-
+        if (jugador2.devolverapuesta() < max(jugador1.devolverapuesta(), jugador3.devolverapuesta())){
+            QMessageBox::information(this, "Mensaje", "La apuesta minima es " + QString::number(max(jugador1.devolverapuesta(), jugador3.devolverapuesta())) + "€");
+        }
+        else{
+            jugador2.numeroytipocartas();
+                turnosiguiente();
+        }
         break;
     case 3:
-            ui->mano1->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
-            ui->mano2->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
-            turnosiguiente();
+        if (jugador3.devolverapuesta() < max(jugador1.devolverapuesta(), jugador2.devolverapuesta())){
+            QMessageBox::information(this, "Mensaje", "La apuesta minima es " + QString::number(max(jugador1.devolverapuesta(), jugador2.devolverapuesta())) + "€");
+        }
+        else{
+            jugador3.numeroytipocartas();
+                turnosiguiente();
+        }
         break;
     default:
-            ui->mano1->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
-            ui->mano2->setPixmap(QPixmap(":/imagenes/carta vuelta.png"));
-            turnosiguiente();
+        if (jugador1.devolverapuesta() < max(jugador3.devolverapuesta(), jugador2.devolverapuesta())){
+            QMessageBox::information(this, "Mensaje", "La apuesta minima es " + QString::number(max(jugador3.devolverapuesta(), jugador2.devolverapuesta())) + "€");
+        }
+        else{
+            jugador1.numeroytipocartas();
+                turnosiguiente();
+        }
         break;
     }
 
 }
 
+
+void juego::on_retirarse_clicked()
+{
+    switch(mesa1.devolverturno()){
+    case 2:
+        jugador2.retirarse();
+        turnosiguiente();
+        break;
+    case 3:
+        jugador3.retirarse();
+        turnosiguiente();
+        break;
+    default:
+        jugador1.retirarse();
+        turnosiguiente();
+        break;
+    }
+}
