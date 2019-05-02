@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <mesa.h>
 #include <QTextEdit>
+
 extern jugador jugador1;
 extern jugador jugador2;
 extern jugador jugador3;

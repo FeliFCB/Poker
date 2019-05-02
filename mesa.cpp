@@ -126,29 +126,29 @@ int mesa::sumarturno(){
 
 
 void mesa::numeroytipocartas(){
-    qDebug("abierto");
-    QString num1=QString::number(cartas[4]);
-    qDebug(num1.toLatin1());
-    //int aux=cartas[4];
+ qDebug("abierto");
+QString num1=QString::number(cartas[4]);
+qDebug(num1.toLatin1());
+//int aux=cartas[4];
 
     unsigned int i=0;
     while (i<5) {
-        infodecarta(cartas[i]);
-        numerocartas[i]=numero;
-        tipocartas[i]=tipo;
-        QString num=QString::number(numero);
-        qDebug("La carta %d de la mesa es el:",i+1);
+
+
+    infodecarta(cartas[i]);
+    numerocartas[i]=numero;
+    tipocartas[i]=tipo;
+       QString num=QString::number(numero);
         qDebug(num.toLatin1());
         qDebug(tipo.toLatin1());
         i+=1;
-    }
+}
 
-    /*infodecarta(aux);
-    numerocartas[4]=numero;
-    tipocartas[4]=tipo;
-    QString num=QString::number(numero);
-    qDebug("La carta 5 de la mesa es el:");
-    qDebug(num.toLatin1());
-    qDebug(tipo.toLatin1());*/
+//    infodecarta(aux);
+//    numerocartas[4]=numero;
+//    tipocartas[4]=tipo;
+//       QString num=QString::number(numero);
+//        qDebug(num.toLatin1());
+//        qDebug(tipo.toLatin1());
 
 }

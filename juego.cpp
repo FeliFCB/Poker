@@ -3,6 +3,7 @@
 #include "QMessageBox"
 #include "mainwindow.h"
 #include <jugador.h>
+#include <manos.h>
 extern int pedo;
 
 juego::juego(QString nombre1, QString nombre2, QString nombre3, QWidget *parent) :
@@ -1026,7 +1027,9 @@ void juego::on_apostar_clicked()
 }
 
 void juego::on_pasar_clicked()
-{
+{  pareja pareja1;
+
+
     switch (mesa1.devolverturno()) {
     case 2:
         if (jugador2.devolverapuesta() < max(jugador1.devolverapuesta(), jugador3.devolverapuesta())){
@@ -1035,6 +1038,7 @@ void juego::on_pasar_clicked()
         else{
             jugador2.numeroytipocartas();
                 turnosiguiente();
+//                pareja1.espareja(jugador2,mesa1);
         }
         break;
     case 3:
@@ -1044,6 +1048,7 @@ void juego::on_pasar_clicked()
         else{
             jugador3.numeroytipocartas();
                 turnosiguiente();
+//                pareja1.espareja(jugador1,mesa1);
         }
         break;
     default:
@@ -1053,6 +1058,7 @@ void juego::on_pasar_clicked()
         else{
             jugador1.numeroytipocartas();
                 turnosiguiente();
+//                pareja1.espareja(jugador2,mesa1);
         }
         break;
     }
@@ -1077,3 +1083,4 @@ void juego::on_retirarse_clicked()
         break;
     }
 }
+

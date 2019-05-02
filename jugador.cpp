@@ -3,6 +3,7 @@
 #include <string>
 #include <mesa.h>
 #include "mesa.h"
+
 using namespace std;
 
 jugador::jugador(){
@@ -79,23 +80,21 @@ void jugador::retirarse(){
 }
 
 void jugador::numeroytipocartas(){
-    int aux=cartas[1];
+ int aux=cartas[1];
 
     infodecarta(cartas[0]);
     numerocartas[0]=numero;
     tipocartas[0]=tipo;
-    QString num=QString::number(numero);
-    qDebug("La carta 1 del jugador es el:");
-    qDebug(num.toLatin1());
-    qDebug(tipo.toLatin1());
+//       QString num=QString::number(numero);
+//        qDebug(num.toLatin1());
+//        qDebug(tipo.toLatin1());
 
 
     infodecarta(aux);
     numerocartas[1]=numero;
     tipocartas[1]=tipo;
-    num=QString::number(numero);
-    qDebug("La carta 2 del jugador es el:");
-    qDebug(num.toLatin1());
-    qDebug(tipo.toLatin1());
+//        num=QString::number(numero);
+//        qDebug(num.toLatin1());
+//        qDebug(tipo.toLatin1());
 
 }

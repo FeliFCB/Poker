@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>502</width>
+    <height>366</height>
    </rect>
   </property>
   <property name="palette">
@@ -140,8 +140,8 @@ background-image: url(:/imagenes/Fondo_Verde133928781355.jpg);
    <widget class="QPushButton" name="comenzar">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>170</y>
+      <x>160</x>
+      <y>190</y>
       <width>151</width>
       <height>41</height>
      </rect>
@@ -279,10 +279,10 @@ background-image: url(:/imagenes/Fondo_Verde133928781355.jpg);
    <widget class="QLabel" name="label1">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>59</y>
-      <width>71</width>
-      <height>21</height>
+      <x>40</x>
+      <y>55</y>
+      <width>81</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="palette">
@@ -419,10 +419,10 @@ background-image: url(:/imagenes/Fondo_Verde133928781355.jpg);
    <widget class="QLabel" name="label2">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>60</y>
-      <width>71</width>
-      <height>20</height>
+      <x>200</x>
+      <y>55</y>
+      <width>81</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="palette">
@@ -558,10 +558,10 @@ background-image: url(:/imagenes/Fondo_Verde133928781355.jpg);
    <widget class="QLabel" name="label3">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>59</y>
-      <width>71</width>
-      <height>21</height>
+      <x>380</x>
+      <y>55</y>
+      <width>81</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="palette">
@@ -698,9 +698,9 @@ background-image: url(:/imagenes/Fondo_Verde133928781355.jpg);
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>20</y>
-      <width>271</width>
-      <height>20</height>
+      <y>10</y>
+      <width>361</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="palette">
@@ -840,8 +840,8 @@ background-image: url(:/imagenes/Fondo_Verde133928781355.jpg);
    <widget class="QLineEdit" name="nombre2">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>84</y>
+      <x>180</x>
+      <y>90</y>
       <width>113</width>
       <height>21</height>
      </rect>
@@ -853,8 +853,8 @@ background-image: url(:/imagenes/Fondo_Verde133928781355.jpg);
    <widget class="QLineEdit" name="nombre3">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>84</y>
+      <x>360</x>
+      <y>90</y>
       <width>113</width>
       <height>21</height>
      </rect>
@@ -866,8 +866,8 @@ background-image: url(:/imagenes/Fondo_Verde133928781355.jpg);
    <widget class="QLineEdit" name="nombre1">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>84</y>
+      <x>20</x>
+      <y>90</y>
       <width>113</width>
       <height>21</height>
      </rect>
@@ -882,8 +882,8 @@ background-image: url(:/imagenes/Fondo_Verde133928781355.jpg);
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
-     <height>21</height>
+     <width>502</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>

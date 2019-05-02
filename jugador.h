@@ -27,7 +27,9 @@ public:
     void numeroytipocartas();
     vector <int> numerocartas{2};
     vector <QString> tipocartas{2};
-
+    int valor_mano;
+    QString nombremano;
+     int cartaalta;
 
 private:
     QString nombre;
