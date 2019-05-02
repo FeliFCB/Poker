@@ -129,26 +129,35 @@ void mesa::numeroytipocartas(){
     qDebug("abierto");
     QString num1=QString::number(cartas[4]);
     qDebug(num1.toLatin1());
-    //int aux=cartas[4];
+    // int aux=cartas[4];
 
     unsigned int i=0;
     while (i<5) {
-        infodecarta(cartas[i]);
-        numerocartas[i]=numero;
-        tipocartas[i]=tipo;
-        QString num=QString::number(numero);
-        qDebug("La carta %d de la mesa es el:",i+1);
-        qDebug(num.toLatin1());
-        qDebug(tipo.toLatin1());
-        i+=1;
-    }
 
-    /*infodecarta(aux);
-    numerocartas[4]=numero;
-    tipocartas[4]=tipo;
+
+    infodecarta(cartas[i]);
+    numerocartas[i]=numero;
+    tipocartas[i]=tipo;
     QString num=QString::number(numero);
-    qDebug("La carta 5 de la mesa es el:");
     qDebug(num.toLatin1());
-    qDebug(tipo.toLatin1());*/
+    qDebug(tipo.toLatin1());
+    i+=1;
+}
 
+//    infodecarta(aux);
+//    numerocartas[4]=numero;
+//    tipocartas[4]=tipo;
+//       QString num=QString::number(numero);
+//        qDebug(num.toLatin1());
+//        qDebug(tipo.toLatin1());
+
+}
+
+void mesa::reset_variables(){
+    bote = 0;
+    turno = 0;
+    fase = 1;
+    jugada = 1;
+    nuevafase = false;
+    cartas[0] = 0; cartas[1] = 0; cartas[2] = 0; cartas[3] = 0; cartas[4] = 0;
 }

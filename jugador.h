@@ -23,11 +23,15 @@ public:
     QString devolvernombre();
     bool devolvereliminado();
     bool devolverretirado();
+    void sumardinero(int bote);
+    void reset_variables();
     void retirarse();
     void numeroytipocartas();
     vector <int> numerocartas{2};
     vector <QString> tipocartas{2};
-
+    QString nombremano;
+    int cartaalta;
+    int valor_mano;
 
 private:
     QString nombre;

@@ -19,6 +19,7 @@ public:
     int devolverturno();
     int sumarturno();
     void numeroytipocartas();
+    void reset_variables();
     bool nuevafase;
     int fase;
     int jugada;

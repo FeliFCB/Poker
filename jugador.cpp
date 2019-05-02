@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 #include <mesa.h>
-#include "mesa.h"
+
 using namespace std;
 
 jugador::jugador(){
@@ -13,6 +13,7 @@ jugador::jugador(){
     cartas[0] = 0;
     cartas[1] = 0;
     retirado = false;
+    nombremano = "carta alta";
 }
 
 
@@ -27,9 +28,9 @@ int jugador::apostar(int subida){
 }
 
 void jugador::obtenercartas(int carta1, int carta2, int carta3, int carta4){
-    qDebug("LOS OTROS 2 JUGADORES:");
-    qDebug("Primer jugador: %d    %d", carta1, carta2);
-    qDebug("Segundo jugador: %d    %d", carta3, carta4);
+//    qDebug("LOS OTROS 2 JUGADORES:");
+//    qDebug("Primer jugador: %d    %d", carta1, carta2);
+//    qDebug("Segundo jugador: %d    %d", carta3, carta4);
     srand(time(NULL));
     vector <char[30]> imagenes{2};
     bool comprobacion = true;
@@ -50,8 +51,8 @@ void jugador::obtenercartas(int carta1, int carta2, int carta3, int carta4){
         }
     }
     cartas[1] = aux;
-    qDebug("EL JUGADOR RECIBE: %d    %d", cartas[0], cartas[1]);
-    qDebug("------------------");
+//    qDebug("EL JUGADOR RECIBE: %d    %d", cartas[0], cartas[1]);
+//    qDebug("------------------");
 }
 
 int jugador::devolverdinero(){
@@ -74,8 +75,13 @@ bool jugador::devolverretirado(){
     return retirado;
 }
 
+
 void jugador::retirarse(){
     retirado = true;
+}
+
+void jugador::sumardinero(int bote){
+    dinero = dinero + bote;
 }
 
 void jugador::numeroytipocartas(){
@@ -84,18 +90,27 @@ void jugador::numeroytipocartas(){
     infodecarta(cartas[0]);
     numerocartas[0]=numero;
     tipocartas[0]=tipo;
-    QString num=QString::number(numero);
-    qDebug("La carta 1 del jugador es el:");
-    qDebug(num.toLatin1());
-    qDebug(tipo.toLatin1());
+    // QString num=QString::number(numero);
+    // qDebug(num.toLatin1());
+    // qDebug(tipo.toLatin1());
 
 
     infodecarta(aux);
     numerocartas[1]=numero;
     tipocartas[1]=tipo;
-    num=QString::number(numero);
-    qDebug("La carta 2 del jugador es el:");
-    qDebug(num.toLatin1());
-    qDebug(tipo.toLatin1());
+    // num=QString::number(numero);
+    // qDebug(num.toLatin1());
+    // qDebug(tipo.toLatin1());
 
+}
+
+void jugador::reset_variables(){
+    apuesta = 0;
+    cartas[0] = 0;
+    cartas[1] = 0;
+    retirado = false;
+    if (dinero == 0) eliminado = true;
+    valor_mano = 0;
+    cartaalta = 0;
+    nombremano = "carta alta";
 }

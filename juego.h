@@ -2,12 +2,8 @@
 #define JUEGO_H
 
 #include <QMainWindow>
-#include <mesa.h>
+#include <manos.h>
 #include <QTextEdit>
-extern jugador jugador1;
-extern jugador jugador2;
-extern jugador jugador3;
-extern mesa mesa1;
 
 namespace Ui {
 class juego;
