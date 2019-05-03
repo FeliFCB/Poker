@@ -23,6 +23,9 @@ class pareja: public manos
 public:
     pareja();
     void comprobarmano();
+    bool parejaj1;
+    bool parejaj2;
+    bool parejaj3;
 private:
     int valor;
 
@@ -31,6 +34,7 @@ private:
 class doblepareja: public manos
 {
 public:
+    doblepareja();
     void comprobarmano();
 private:
     int valor;
@@ -41,6 +45,9 @@ class trio: public manos
 public:
     trio();
     void comprobarmano();
+    bool trioj1;
+    bool trioj2;
+    bool trioj3;
 private:
     int valor;
 };
@@ -65,6 +72,7 @@ private:
 class full: public pareja, public trio
 {
 public:
+    full();
     void comprobarmano();
 private:
     int valor;

@@ -66,6 +66,7 @@ void pareja::comprobarmano(){
                 jugador1.cartaalta = cartaalta;
                 jugador1.valor_mano = valor;
                 jugador1.nombremano = "pareja";
+                parejaj1=true;
             }
         }
     }
@@ -92,6 +93,7 @@ void pareja::comprobarmano(){
                 jugador2.cartaalta = cartaalta;
                 jugador2.valor_mano = valor;
                 jugador2.nombremano = "pareja";
+                parejaj2=true;
             }
         }
     }
@@ -113,6 +115,9 @@ void pareja::comprobarmano(){
                     if (aux == 1) aux = 14;
                     if (cartaalta < aux) cartaalta = aux;
                 }
+            }
+            if (iguales == 1){
+                parejaj3=true;
             }
             if (iguales == 1 && jugador3.valor_mano <= valor){
                 jugador3.cartaalta = cartaalta;
@@ -143,6 +148,100 @@ void pareja::comprobarmano(){
 
 }
 
+doblepareja::doblepareja(){
+    valor = 30;
+}
+void doblepareja::comprobarmano(){
+
+    vector<int>cartas{7};
+    vector<int> cartasaux;
+    int cartaalta = 0;
+    int iguales;
+    int aux;
+    int s;
+    if (!jugador1.devolverretirado() && !jugador1.devolvereliminado()){
+        s=0;
+        cartas={jugador1.numerocartas[0],jugador1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        cartasaux=cartas;
+
+        for (unsigned long long i = 0; i < 6; i++) {
+            iguales = 0;
+            for (unsigned long long j = i + 1; j < 7; j++) {
+                if (cartas[i] == cartasaux[j]){
+                    cartasaux[j] = 0;
+                    iguales += 1;
+                    s+=1;
+                    aux = cartas[i];
+                    if (aux == 1) aux = 14;
+                    if (cartaalta < aux) cartaalta = aux;
+                }
+            }
+            if (iguales == 1 && jugador1.valor_mano <= valor && s>=2){
+                jugador1.cartaalta = cartaalta;
+                jugador1.valor_mano = valor;
+                jugador1.nombremano = "doble pareja";
+            }
+        }
+    }
+
+
+
+
+    if (!jugador2.devolverretirado() && !jugador2.devolvereliminado()){
+        s=0;
+        cartas={jugador2.numerocartas[0],jugador2.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        cartasaux = cartas;
+        cartaalta = 0;
+        for (unsigned long long i = 0; i < 6; i++) {
+            iguales = 0;
+            for (unsigned long long j = i + 1; j < 7; j++) {
+                if (cartas[i] == cartasaux[j]){
+                    cartasaux[j] = 0;
+                    iguales += 1;
+                    s+=1;
+                    aux = cartas[i];
+                    if (aux == 1) aux = 14;
+                    if (cartaalta < aux) cartaalta = aux;
+                }
+            }
+            if (iguales == 1 && jugador2.valor_mano <= valor && s>=2){
+                jugador2.cartaalta = cartaalta;
+                jugador2.valor_mano = valor;
+                jugador2.nombremano = "doble pareja";
+            }
+        }
+    }
+
+
+
+
+    if (!jugador3.devolverretirado() && !jugador3.devolvereliminado()){
+        s=0;
+        cartas={jugador3.numerocartas[0],jugador3.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        cartasaux = cartas;
+        cartaalta = 0;
+        for (unsigned long long i = 0; i < 6; i++) {
+            iguales = 0;
+            for (unsigned long long j = i + 1; j < 7; j++) {
+                if (cartas[i] == cartasaux[j]){
+                    cartasaux[j] = 0;
+                    iguales += 1;
+                    s+=1;
+                    aux = cartas[i];
+                    if (aux == 1) aux = 14;
+                    if (cartaalta < aux) cartaalta = aux;
+                }
+            }
+            if (iguales == 1 && jugador3.valor_mano <= valor && s>=2){
+                jugador3.cartaalta = cartaalta;
+                jugador3.valor_mano = valor;
+                jugador3.nombremano = "doble pareja";
+            }
+        }
+    }
+}
+
+
 trio::trio(){
     valor=40;
 }
@@ -172,6 +271,7 @@ void trio::comprobarmano(){
                 jugador1.cartaalta = cartaalta;
                 jugador1.valor_mano = valor;
                 jugador1.nombremano = "trio";
+                trioj1=true;
             }
         }
     }
@@ -200,6 +300,7 @@ void trio::comprobarmano(){
                 jugador2.cartaalta = cartaalta;
                 jugador2.valor_mano = valor;
                 jugador2.nombremano = "trio";
+                trioj2=true;
             }
         }
     }
@@ -224,14 +325,37 @@ void trio::comprobarmano(){
                     if (cartaalta < aux) cartaalta = aux;
                 }
             }
+            if (iguales==2){
+                trioj3=true;
+            }
             if (iguales == 2 && jugador3.valor_mano <= valor){
                 jugador3.cartaalta = cartaalta;
                 jugador3.valor_mano = valor;
                 jugador3.nombremano = "trio";
+
             }
         }
     }
 
+}
+
+full::full(){
+    valor=50;
+}
+
+void full::comprobarmano(){
+    if (trio::trioj1==true && pareja::parejaj1==true){
+        jugador1.valor_mano = valor;
+        jugador1.nombremano = "full";
+    }
+    if (trio::trioj2==true && pareja::parejaj2==true){
+        jugador2.valor_mano = valor;
+        jugador2.nombremano = "full";
+    }
+    if (trio::trioj3==true && pareja::parejaj3==true){
+        jugador3.valor_mano = valor;
+        jugador3.nombremano = "full";
+    }
 }
 
 poker::poker(){

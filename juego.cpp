@@ -1029,12 +1029,16 @@ void juego::turnosiguiente(){
                 jugador3.numeroytipocartas();
                 mesa1.numeroytipocartas();
                 pareja pareja1;
+                doblepareja doblepareja1;
                 trio trio1;
                 escalera escalera1;
+                full full1;
                 poker poker1;
                 pareja1.comprobarmano();
+                doblepareja1.comprobarmano();
                 trio1.comprobarmano();
                 escalera1.comprobarmano();
+                full1.comprobarmano();
                 poker1.comprobarmano();
 
                 if (jugador1.devolvereliminado() || jugador1.devolverretirado()){
