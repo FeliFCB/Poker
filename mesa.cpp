@@ -155,9 +155,11 @@ void mesa::numeroytipocartas(){
 
 void mesa::reset_variables(){
     bote = 0;
-    turno = 0;
+//    turno = 0;
     fase = 1;
-    jugada = 1;
+    jugada++;
     nuevafase = false;
     cartas[0] = 0; cartas[1] = 0; cartas[2] = 0; cartas[3] = 0; cartas[4] = 0;
+    if (jugada > 3) jugada = 1;
+    turno = jugada;
 }
