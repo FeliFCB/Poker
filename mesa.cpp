@@ -82,7 +82,7 @@ int mesa::sumarturno(){
     nuevafase = false;
     switch (turno) {
     case 2:
-        if (jugador3.devolverretirado()){
+        if (jugador3.devolverretirado() || jugador3.devolvereliminado()){
             turno = 1;
             if(jugada == 3){
                 fase++;
@@ -93,7 +93,7 @@ int mesa::sumarturno(){
         break;
 
     case 3:
-        if (jugador1.devolverretirado()){
+        if (jugador1.devolverretirado() || jugador1.devolvereliminado()){
             turno = 2;
             if (jugada == 1){
                 fase++;
@@ -104,7 +104,7 @@ int mesa::sumarturno(){
         break;
 
     default:
-        if (jugador2.devolverretirado()){
+        if (jugador2.devolverretirado() || jugador2.devolvereliminado()){
             turno = 3;
             if (jugada == 2){
                 fase++;
@@ -115,7 +115,7 @@ int mesa::sumarturno(){
         break;
     }
 
-    if ((turno == jugada) && (jugador1.devolverapuesta() >= max(jugador2.devolverapuesta(), jugador3.devolverapuesta()) || jugador1.devolverretirado()) && (jugador2.devolverapuesta() >= max(jugador1.devolverapuesta(), jugador3.devolverapuesta()) || jugador2.devolverretirado()) && jugador3.devolverapuesta() >= max(jugador1.devolverapuesta(), jugador2.devolverapuesta()) || jugador3.devolverretirado()){
+    if ((turno == jugada) && (jugador1.devolverapuesta() == max(jugador2.devolverapuesta(), jugador3.devolverapuesta()) || jugador1.devolverretirado() || jugador1.devolvereliminado()) && (jugador2.devolverapuesta() == max(jugador1.devolverapuesta(), jugador3.devolverapuesta()) || jugador2.devolverretirado() || jugador2.devolvereliminado()) && (jugador3.devolverapuesta() >= max(jugador1.devolverapuesta(), jugador2.devolverapuesta()) || jugador3.devolverretirado() || jugador3.devolvereliminado())){
         fase++;
         nuevafase = true;
     }
@@ -161,5 +161,8 @@ void mesa::reset_variables(){
     nuevafase = false;
     cartas[0] = 0; cartas[1] = 0; cartas[2] = 0; cartas[3] = 0; cartas[4] = 0;
     if (jugada > 3) jugada = 1;
+    if (jugador1.devolvereliminado() && jugada == 1) jugada = 2;
+    else if (jugador2.devolvereliminado() && jugada == 2) jugada = 3;
+    else if (jugador3.devolvereliminado() && jugada == 3) jugada = 1;
     turno = jugada;
 }

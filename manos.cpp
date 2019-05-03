@@ -338,20 +338,20 @@ void escalera::comprobarmano(){
     int hay_escalera=0;
     if (!jugador1.devolverretirado() && !jugador1.devolvereliminado()){
         cartas={jugador1.numerocartas[0],jugador1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
-        for (unsigned long long k = 0; k < 6; k++){
+        for (unsigned long long k = 0; k < 7; k++){
             if (cartas[k]==1){
                 cartas[k]=14;
             }
         }
-        for (unsigned long long i = 0; i < 6; i++){
+        for (unsigned long long i = 0; i < 7; i++){
             s=1;
             escalera={0,0,0,0,0};
-            escalera[1]=cartas[i];
-            for (unsigned long long j = 0; j < 6; j++){
+            escalera[0]=cartas[i];
+            for (unsigned long long j = 0; j < 7; j++){
                 if((cartas[i]==cartas[j]-1) || (cartas[i]==cartas[j]-2)||(cartas[i]==cartas[j]-3) || (cartas[i]==cartas[j]-4)){
                     pos=cartas[j]-cartas[i];
-                    if(escalera[pos+1]==0){
-                        escalera[pos+1]=cartas[j];
+                    if(escalera[pos]==0){
+                        escalera[pos]=cartas[j];
                         s+=1;
                     }
                 }
@@ -376,22 +376,22 @@ void escalera::comprobarmano(){
 
     if (!jugador2.devolverretirado() && !jugador2.devolvereliminado()){
         cartas={jugador2.numerocartas[0],jugador2.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
-        for (unsigned long long k = 0; k < 6; k++){
+        for (unsigned long long k = 0; k < 7; k++){
             if (cartas[k]==1){
                 cartas[k]=14;
             }
         }
         cartaalta=0;
         hay_escalera=0;
-        for (unsigned long long i = 0; i < 6; i++){
+        for (unsigned long long i = 0; i < 7; i++){
             s=1;
             escalera={0,0,0,0,0};
-            escalera[1]=cartas[i];
-            for (unsigned long long j = 0; j < 6; j++){
+            escalera[0]=cartas[i];
+            for (unsigned long long j = 0; j < 7; j++){
                 if((cartas[i]==cartas[j]-1) || (cartas[i]==cartas[j]-2)||(cartas[i]==cartas[j]-3) || (cartas[i]==cartas[j]-4)){
                     pos=cartas[j]-cartas[i];
-                    if(escalera[pos+1]==0){
-                        escalera[pos+1]=cartas[j];
+                    if(escalera[pos]==0){
+                        escalera[pos]=cartas[j];
                         s+=1;
                     }
                 }
@@ -415,22 +415,22 @@ void escalera::comprobarmano(){
 
     if (!jugador3.devolverretirado() && !jugador3.devolvereliminado()){
         cartas={jugador3.numerocartas[0],jugador3.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
-        for (unsigned long long k = 0; k < 6; k++){
+        for (unsigned long long k = 0; k < 7; k++){
             if (cartas[k]==1){
                 cartas[k]=14;
             }
         }
         cartaalta=0;
         hay_escalera=0;
-        for (unsigned long long i = 0; i < 6; i++){
+        for (unsigned long long i = 0; i < 7; i++){
             s=1;
             escalera={0,0,0,0,0};
-            escalera[1]=cartas[i];
-            for (unsigned long long j = 0; j < 6; j++){
+            escalera[0]=cartas[i];
+            for (unsigned long long j = 0; j < 7; j++){
                 if((cartas[i]==cartas[j]-1) || (cartas[i]==cartas[j]-2)||(cartas[i]==cartas[j]-3) || (cartas[i]==cartas[j]-4)){
                     pos=cartas[j]-cartas[i];
-                    if(escalera[pos+1]==0){
-                        escalera[pos+1]=cartas[j];
+                    if(escalera[pos]==0){
+                        escalera[pos]=cartas[j];
                         s+=1;
                     }
                 }

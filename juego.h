@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <manos.h>
 #include <QTextEdit>
+#include <math.h>
 
 namespace Ui {
 class juego;

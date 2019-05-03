@@ -280,9 +280,9 @@ background-image: url(:/imagenes/Fondo_Verde133928781355.jpg);
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>55</y>
-      <width>81</width>
-      <height>31</height>
+      <y>65</y>
+      <width>71</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="palette">
@@ -420,9 +420,9 @@ background-image: url(:/imagenes/Fondo_Verde133928781355.jpg);
     <property name="geometry">
      <rect>
       <x>200</x>
-      <y>55</y>
-      <width>81</width>
-      <height>31</height>
+      <y>65</y>
+      <width>71</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="palette">
@@ -559,9 +559,9 @@ background-image: url(:/imagenes/Fondo_Verde133928781355.jpg);
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>55</y>
-      <width>81</width>
-      <height>31</height>
+      <y>65</y>
+      <width>71</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="palette">
@@ -883,7 +883,7 @@ background-image: url(:/imagenes/Fondo_Verde133928781355.jpg);
      <x>0</x>
      <y>0</y>
      <width>502</width>
-     <height>26</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>

@@ -1022,9 +1022,12 @@ void juego::turnosiguiente(){
             case 4:
                 mesa1.repartir5();
                 mostrar5(mesa1.cartas[4]);
-                mesa1.numeroytipocartas();
                 break;
             case 5:
+                jugador1.numeroytipocartas();
+                jugador2.numeroytipocartas();
+                jugador3.numeroytipocartas();
+                mesa1.numeroytipocartas();
                 pareja pareja1;
                 trio trio1;
                 escalera escalera1;
@@ -1039,6 +1042,11 @@ void juego::turnosiguiente(){
                         QMessageBox::information(this,"Mensaje",jugador2.devolvernombre() + " tiene " + jugador2.nombremano + " y gana los " + QString::number(mesa1.devolverbote()) + "€.\n" + jugador3.devolvernombre() + " tenia " + jugador1.nombremano);
                         jugador2.sumardinero(mesa1.devolverbote());
                     }
+                    else if(jugador2.valor_mano == jugador3.valor_mano && jugador2.cartaalta == jugador3.cartaalta){
+                        QMessageBox::information(this,"Mensaje",jugador2.devolvernombre() + " y " + jugador3.devolvernombre() + " tienen " + jugador2.nombremano + " y ganan " + QString::number(floor(mesa1.devolverbote()/2)) + "€ cada uno");
+                        jugador2.sumardinero(mesa1.devolverbote()/2);
+                        jugador3.sumardinero(mesa1.devolverbote()/2);
+                    }
                     else{
                         QMessageBox::information(this,"Mensaje",jugador3.devolvernombre() + " tiene " + jugador3.nombremano + " y gana los " + QString::number(mesa1.devolverbote()) + "€.\n" + jugador2.devolvernombre() + " tenia " + jugador2.nombremano);
                         jugador3.sumardinero(mesa1.devolverbote());
@@ -1046,8 +1054,13 @@ void juego::turnosiguiente(){
                 }
                 else if(jugador2.devolvereliminado() || jugador2.devolverretirado()){
                     if (jugador1.valor_mano > jugador3.valor_mano || (jugador1.valor_mano == jugador3.valor_mano && jugador1.cartaalta > jugador3.cartaalta)){
-                        QMessageBox::information(this,"Mensaje",jugador1.devolvernombre() + " tiene " + jugador1.nombremano + " y gana los " + QString::number(mesa1.devolverbote()) + "€.\n" + jugador3.devolvernombre() + " tenia " + jugador1.nombremano);
+                        QMessageBox::information(this,"Mensaje",jugador1.devolvernombre() + " tiene " + jugador1.nombremano + " y gana los " + QString::number(mesa1.devolverbote()) + "€.\n" + jugador3.devolvernombre() + " tenia " + jugador3.nombremano);
                         jugador1.sumardinero(mesa1.devolverbote());
+                    }
+                    else if(jugador1.valor_mano == jugador3.valor_mano && jugador1.cartaalta == jugador3.cartaalta){
+                        QMessageBox::information(this,"Mensaje",jugador1.devolvernombre() + " y " + jugador3.devolvernombre() + " tienen " + jugador1.nombremano + " y ganan " + QString::number(floor(mesa1.devolverbote()/2)) + "€ cada uno");
+                        jugador1.sumardinero(mesa1.devolverbote()/2);
+                        jugador3.sumardinero(mesa1.devolverbote()/2);
                     }
                     else{
                         QMessageBox::information(this,"Mensaje",jugador3.devolvernombre() + " tiene " + jugador3.nombremano + " y gana los " + QString::number(mesa1.devolverbote()) + "€.\n" + jugador1.devolvernombre() + " tenia " + jugador1.nombremano);
@@ -1058,6 +1071,11 @@ void juego::turnosiguiente(){
                     if (jugador1.valor_mano > jugador2.valor_mano || (jugador1.valor_mano == jugador2.valor_mano && jugador1.cartaalta > jugador2.cartaalta)){
                         QMessageBox::information(this,"Mensaje",jugador1.devolvernombre() + " tiene " + jugador1.nombremano + " y gana los " + QString::number(mesa1.devolverbote()) + "€.\n" + jugador2.devolvernombre() + " tenia " + jugador2.nombremano);
                         jugador1.sumardinero(mesa1.devolverbote());
+                    }
+                    else if(jugador2.valor_mano == jugador1.valor_mano && jugador1.cartaalta == jugador3.cartaalta){
+                        QMessageBox::information(this,"Mensaje",jugador1.devolvernombre() + " y " + jugador2.devolvernombre() + " tienen " + jugador2.nombremano + " y ganan " + QString::number(floor(mesa1.devolverbote()/2)) + "€ cada uno");
+                        jugador2.sumardinero(mesa1.devolverbote()/2);
+                        jugador1.sumardinero(mesa1.devolverbote()/2);
                     }
                     else{
                         QMessageBox::information(this,"Mensaje",jugador2.devolvernombre() + " tiene " + jugador2.nombremano + " y gana los " + QString::number(mesa1.devolverbote()) + "€.\n" + jugador1.devolvernombre() + " tenia " + jugador1.nombremano);
@@ -1073,10 +1091,30 @@ void juego::turnosiguiente(){
                         QMessageBox::information(this,"Mensaje",jugador2.devolvernombre() + " tiene " + jugador2.nombremano + " y gana los " + QString::number(mesa1.devolverbote()) + "€.\n" + jugador1.devolvernombre() + " tenia " + jugador1.nombremano + "\n" + jugador3.devolvernombre() + " tenia " + jugador3.nombremano);
                         jugador2.sumardinero(mesa1.devolverbote());
                     }
-                    else{
-        //                ((jugador3.valor_mano > jugador2.valor_mano && jugador3.valor_mano > jugador1.valor_mano) || (jugador3.valor_mano == jugador2.valor_mano && jugador3.cartaalta > jugador2.cartaalta && jugador3.valor_mano > jugador1.valor_mano) || (jugador3.valor_mano > jugador2.valor_mano && jugador3.valor_mano == jugador1.valor_mano && jugador3.cartaalta > jugador1.cartaalta) || (jugador3.valor_mano == jugador2.valor_mano && jugador3.valor_mano == jugador1.valor_mano && jugador3.cartaalta > jugador2.cartaalta && jugador3.cartaalta > jugador1.cartaalta)){
+                    else if ((jugador3.valor_mano > jugador2.valor_mano && jugador3.valor_mano > jugador1.valor_mano) || (jugador3.valor_mano == jugador2.valor_mano && jugador3.cartaalta > jugador2.cartaalta && jugador3.valor_mano > jugador1.valor_mano) || (jugador3.valor_mano > jugador2.valor_mano && jugador3.valor_mano == jugador1.valor_mano && jugador3.cartaalta > jugador1.cartaalta) || (jugador3.valor_mano == jugador2.valor_mano && jugador3.valor_mano == jugador1.valor_mano && jugador3.cartaalta > jugador2.cartaalta && jugador3.cartaalta > jugador1.cartaalta)){
                         QMessageBox::information(this,"Mensaje",jugador3.devolvernombre() + " tiene " + jugador3.nombremano + " y gana los " + QString::number(mesa1.devolverbote()) + "€.\n" + jugador1.devolvernombre() + " tenia " + jugador1.nombremano + "\n" + jugador2.devolvernombre() + " tenia " + jugador2.nombremano);
                         jugador3.sumardinero(mesa1.devolverbote());
+                    }
+                    else if ((jugador1.valor_mano == jugador2.valor_mano && jugador1.cartaalta == jugador2.cartaalta && jugador1.valor_mano > jugador3.valor_mano) || (jugador1.valor_mano == jugador2.valor_mano && jugador1.cartaalta == jugador2.cartaalta && jugador1.valor_mano == jugador3.valor_mano && jugador1.cartaalta > jugador3.cartaalta)){
+                        QMessageBox::information(this,"Mensaje",jugador1.devolvernombre() + " y " + jugador2.devolvernombre() + " tienen " + jugador2.nombremano + " y ganan " + QString::number(floor(mesa1.devolverbote()/2)) + "€ cada uno\n" + jugador3.devolvernombre() + " tenia " + jugador3.nombremano);
+                        jugador2.sumardinero(mesa1.devolverbote()/2);
+                        jugador1.sumardinero(mesa1.devolverbote()/2);
+                    }
+                    else if ((jugador1.valor_mano == jugador3.valor_mano && jugador1.cartaalta == jugador3.cartaalta && jugador1.valor_mano > jugador2.valor_mano) || (jugador1.valor_mano == jugador3.valor_mano && jugador1.cartaalta == jugador3.cartaalta && jugador1.valor_mano == jugador2.valor_mano && jugador1.cartaalta > jugador2.cartaalta)){
+                        QMessageBox::information(this,"Mensaje",jugador1.devolvernombre() + " y " + jugador3.devolvernombre() + " tienen " + jugador1.nombremano + " y ganan " + QString::number(floor(mesa1.devolverbote()/2)) + "€ cada uno\n" + jugador2.devolvernombre() + " tenia " + jugador2.nombremano);
+                        jugador3.sumardinero(mesa1.devolverbote()/2);
+                        jugador1.sumardinero(mesa1.devolverbote()/2);
+                    }
+                    else if ((jugador3.valor_mano == jugador2.valor_mano && jugador3.cartaalta == jugador2.cartaalta && jugador3.valor_mano > jugador1.valor_mano) || (jugador3.valor_mano == jugador2.valor_mano && jugador3.cartaalta == jugador2.cartaalta && jugador3.valor_mano == jugador1.valor_mano && jugador3.cartaalta > jugador1.cartaalta)){
+                        QMessageBox::information(this,"Mensaje",jugador2.devolvernombre() + " y " + jugador3.devolvernombre() + " tienen " + jugador2.nombremano + " y ganan " + QString::number(floor(mesa1.devolverbote()/2)) + "€ cada uno\n" + jugador1.devolvernombre() + " tenia " + jugador1.nombremano);
+                        jugador2.sumardinero(mesa1.devolverbote()/2);
+                        jugador3.sumardinero(mesa1.devolverbote()/2);
+                    }
+                    else{
+                        QMessageBox::information(this,"Mensaje",jugador1.devolvernombre() + ", " + jugador2.devolvernombre() + " y " + jugador3.devolvernombre() + " tienen " + jugador2.nombremano + " y ganan " + QString::number(floor(mesa1.devolverbote()/3)) + "€ cada uno");
+                        jugador1.sumardinero(mesa1.devolverbote()/3);
+                        jugador2.sumardinero(mesa1.devolverbote()/3);
+                        jugador3.sumardinero(mesa1.devolverbote()/3);
                     }
                 }
     //            qDebug("El jugador1 tiene de valor de mano %d", jugador1.devolvervalor_mano());
@@ -1105,7 +1143,7 @@ void juego::on_apostar_clicked()
         if (jugador2.devolverapuesta()+ui->apuesta->text().toInt() < max(jugador1.devolverapuesta(), jugador3.devolverapuesta())){
             QMessageBox::information(this, "Mensaje", "La apuesta minima es " + QString::number(max(jugador1.devolverapuesta(), jugador3.devolverapuesta())) + "€");
         }
-        else if(jugador2.devolverapuesta() > jugador2.devolverdinero()){
+        else if(ui->apuesta->text().toInt() > jugador2.devolverdinero()){
             QMessageBox::information(this,"Mensaje", "Solo te quedan " + QString::number(jugador2.devolverdinero()) + " € para apostar");
         }
         else{
@@ -1118,7 +1156,7 @@ void juego::on_apostar_clicked()
         if (jugador3.devolverapuesta()+ui->apuesta->text().toInt() < max(jugador1.devolverapuesta(), jugador2.devolverapuesta())){
             QMessageBox::information(this, "Mensaje", "La apuesta minima es " + QString::number(max(jugador1.devolverapuesta(), jugador2.devolverapuesta())) + "€");
         }
-        else if(jugador3.devolverapuesta() > jugador3.devolverdinero()){
+        else if(ui->apuesta->text().toInt() > jugador3.devolverdinero()){
             QMessageBox::information(this,"Mensaje", "Solo te quedan " + QString::number(jugador3.devolverdinero()) + " € para apostar");
         }
         else{
@@ -1132,7 +1170,7 @@ void juego::on_apostar_clicked()
         if (jugador1.devolverapuesta()+ui->apuesta->text().toInt() < max(jugador3.devolverapuesta(), jugador2.devolverapuesta())){
             QMessageBox::information(this, "Mensaje", "La apuesta minima es " + QString::number(max(jugador3.devolverapuesta(), jugador2.devolverapuesta())) + "€");
         }
-        else if(jugador1.devolverapuesta() > jugador1.devolverdinero()){
+        else if(ui->apuesta->text().toInt() > jugador1.devolverdinero()){
             QMessageBox::information(this,"Mensaje", "Solo te quedan " + QString::number(jugador1.devolverdinero()) + " € para apostar");
         }
         else{
@@ -1153,9 +1191,7 @@ void juego::on_pasar_clicked(){
             QMessageBox::information(this, "Mensaje", "La apuesta minima es " + QString::number(max(jugador1.devolverapuesta(), jugador3.devolverapuesta())) + "€");
         }
         else{
-            jugador2.numeroytipocartas();
                 turnosiguiente();
-//                pareja1.espareja(jugador2,mesa1);
         }
         break;
     case 3:
@@ -1163,9 +1199,7 @@ void juego::on_pasar_clicked(){
             QMessageBox::information(this, "Mensaje", "La apuesta minima es " + QString::number(max(jugador1.devolverapuesta(), jugador2.devolverapuesta())) + "€");
         }
         else{
-            jugador3.numeroytipocartas();
                 turnosiguiente();
-//                pareja1.espareja(jugador1,mesa1);
         }
         break;
     default:
@@ -1173,9 +1207,7 @@ void juego::on_pasar_clicked(){
             QMessageBox::information(this, "Mensaje", "La apuesta minima es " + QString::number(max(jugador3.devolverapuesta(), jugador2.devolverapuesta())) + "€");
         }
         else{
-            jugador1.numeroytipocartas();
                 turnosiguiente();
-//                pareja1.espareja(jugador2,mesa1);
         }
         break;
     }
