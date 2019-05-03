@@ -39,6 +39,7 @@ private:
 class trio: public manos
 {
 public:
+    trio();
     void estrio(jugador player1);
 private:
     int valor;
@@ -47,6 +48,7 @@ private:
 class escalera: public manos
 {
 public:
+    escalera();
     void esescalera(jugador player1);
 private:
     int valor;
@@ -71,6 +73,7 @@ private:
 class poker: public manos
 {
 public:
+    poker();
     void espoker(jugador player1);
 private:
     int valor;

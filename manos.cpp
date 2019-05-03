@@ -132,7 +132,113 @@ void pareja::espareja(){
 
 }
 
-
+trio::trio(){
+    valor=40;
+}
 void trio::estrio(jugador player1){
+    vector<int>cartas{7};
+    cartas={player1.numerocartas[0],player1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+    vector<int> cartasaux=cartas;
+    qDebug("Las cartas a comparar son %d %d %d %d %d %d %d",cartas[0],cartas[1],cartas[2],cartas[3],cartas[4],cartas[5],cartas[6]);
+//    int pareja = 0;
+    int cartaalta = 0;
+    int iguales;
+    int aux;
 
+    for (unsigned long long i = 0; i < 6; i++) {
+        iguales = 0;
+        for (unsigned long long j = i + 1; j < 7; j++) {
+            if (cartas[i] == cartasaux[j]){
+                cartasaux[j] = 0;
+                iguales += 1;
+                aux = cartas[i];
+                if (aux == 1) aux = 14;
+                if (cartaalta < aux) cartaalta = aux;
+            }
+        }
+        if (iguales == 2 && player1.valor_mano < valor){
+            player1.cartaalta = cartaalta;
+            player1.valor_mano = valor;
+            player1.nombremano = "trio";
+        }
+    }
+
+}
+
+poker::poker(){
+    valor=60;
+}
+
+void poker::espoker(jugador player1){
+    vector<int>cartas{7};
+    cartas={player1.numerocartas[0],player1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+    vector<int> cartasaux=cartas;
+    qDebug("Las cartas a comparar son %d %d %d %d %d %d %d",cartas[0],cartas[1],cartas[2],cartas[3],cartas[4],cartas[5],cartas[6]);
+//    int pareja = 0;
+    int cartaalta = 0;
+    int iguales;
+    int aux;
+
+    for (unsigned long long i = 0; i < 6; i++) {
+        iguales = 0;
+        for (unsigned long long j = i + 1; j < 7; j++) {
+            if (cartas[i] == cartasaux[j]){
+                cartasaux[j] = 0;
+                iguales += 1;
+                aux = cartas[i];
+                if (aux == 1) aux = 14;
+                if (cartaalta < aux) cartaalta = aux;
+            }
+        }
+        if (iguales == 3 && player1.valor_mano < valor){
+            player1.cartaalta = cartaalta;
+            player1.valor_mano = valor;
+            player1.nombremano = "poker";
+        }
+    }
+
+}
+escalera::escalera(){
+    valor = 45;
+}
+void escalera::esescalera(jugador player1){
+    vector<int>cartas{7};
+    cartas={player1.numerocartas[0],player1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+    for (unsigned long long k = 0; k < 6; k++){
+        if (cartas[k]==1){
+            cartas[k]=14;
+        }
+    }
+    vector<int>escaleramasalta{5};
+    vector<int>escalera{5};
+    int s;
+    int pos;
+    int cartaalta=0;
+    int hay_escalera=0;
+    for (unsigned long long i = 0; i < 6; i++){
+        s=1;
+        escalera={0,0,0,0,0};
+        escalera[1]=cartas[i];
+        for (unsigned long long j = 0; j < 6; j++){
+            if((cartas[i]==cartas[j]-1) || (cartas[i]==cartas[j]-2)||(cartas[i]==cartas[j]-3) || (cartas[i]==cartas[j]-4)){
+                pos=cartas[j]-cartas[i];
+                if(escalera[pos+1]==0){
+                    escalera[pos+1]=cartas[j];
+                    s+=1;
+                }
+            }
+        }
+
+        if(s>=5 && escalera[4]>cartaalta){
+            escaleramasalta=escalera;
+            cartaalta=escalera[4];
+            hay_escalera=1;
+
+        }
+    }
+    if ( hay_escalera== 1 && player1.valor_mano < valor){
+        player1.cartaalta = cartaalta;
+        player1.valor_mano = valor;
+        player1.nombremano = "escalera";
+    }
 }
