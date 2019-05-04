@@ -1024,20 +1024,22 @@ void juego::turnosiguiente(){
                 mostrar5(mesa1.cartas[4]);
                 break;
             case 5:
-                jugador1.numeroytipocartas();
-                jugador2.numeroytipocartas();
-                jugador3.numeroytipocartas();
+                jugador1.cartastipo1.numeroytipocartas(jugador1.cartas[0],jugador1.cartas[1]);
+                jugador2.cartastipo1.numeroytipocartas(jugador2.cartas[0],jugador2.cartas[1]);
+                jugador3.cartastipo1.numeroytipocartas(jugador3.cartas[0],jugador3.cartas[1]);
                 mesa1.numeroytipocartas();
-                pareja pareja1;
+                cartaalta cartaalta1;
                 doblepareja doblepareja1;
-                trio trio1;
                 escalera escalera1;
+                color color1;
                 full full1;
                 poker poker1;
-                pareja1.comprobarmano();
+                cartaalta1.comprobarmano();
+                full1.pareja::comprobarmano();
                 doblepareja1.comprobarmano();
-                trio1.comprobarmano();
+                full1.trio::comprobarmano();
                 escalera1.comprobarmano();
+                color1.comprobarmano();
                 full1.comprobarmano();
                 poker1.comprobarmano();
 

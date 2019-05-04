@@ -21,3 +21,22 @@ void cartastipo::infodecarta(int a){
     }
 
 }
+
+void cartastipo::numeroytipocartas(int a, int b){
+
+    infodecarta(a);
+    numerocartas[0]=numero;
+    tipocartas[0]=tipo;
+    // QString num=QString::number(numero);
+    // qDebug(num.toLatin1());
+    // qDebug(tipo.toLatin1());
+
+
+    infodecarta(b);
+    numerocartas[1]=numero;
+    tipocartas[1]=tipo;
+    // num=QString::number(numero);
+    // qDebug(num.toLatin1());
+    // qDebug(tipo.toLatin1());
+
+}

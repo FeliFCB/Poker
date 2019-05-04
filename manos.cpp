@@ -7,8 +7,38 @@ manos::manos()
 
 }
 
+void cartaalta::comprobarmano(){
+    vector<int>cartas{7};
+    vector<int>::iterator it;
+    cartas={jugador1.cartastipo1.numerocartas[0],jugador1.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+    int cartaalta = 0;
+    if (!jugador1.devolverretirado() && !jugador1.devolvereliminado()){
+        for (it = cartas.begin(); it != cartas.end(); it++) if (*it > cartaalta) cartaalta = *it;
+    }
+    jugador1.cartaalta = cartaalta;
+
+
+    cartaalta = 0;
+    cartas={jugador2.cartastipo1.numerocartas[0],jugador2.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+    if (!jugador2.devolverretirado() && !jugador2.devolvereliminado()){
+        for (it = cartas.begin(); it != cartas.end(); it++) if (*it > cartaalta) cartaalta = *it;
+    }
+    jugador2.cartaalta = cartaalta;
+
+
+    cartaalta = 0;
+    cartas={jugador3.cartastipo1.numerocartas[0],jugador3.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+    if (!jugador3.devolverretirado() && !jugador3.devolvereliminado()){
+        for (it = cartas.begin(); it != cartas.end(); it++) if (*it > cartaalta) cartaalta = *it;
+    }
+    jugador3.cartaalta = cartaalta;
+}
+
 pareja::pareja(){
     valor = 15;
+    parejaj1 = false;
+    parejaj2 = false;
+    parejaj3 = false;
 }
 void pareja::comprobarmano(){
 //     int carta1=player1.numerocartas[1];
@@ -46,7 +76,7 @@ void pareja::comprobarmano(){
     int iguales;
     int aux;
     if (!jugador1.devolverretirado() && !jugador1.devolvereliminado()){
-        cartas={jugador1.numerocartas[0],jugador1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        cartas={jugador1.cartastipo1.numerocartas[0],jugador1.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         cartasaux=cartas;
         qDebug("Las cartas a comparar son %d %d %d %d %d %d %d",cartas[0],cartas[1],cartas[2],cartas[3],cartas[4],cartas[5],cartas[6]);
     //    int pareja = 0;
@@ -75,7 +105,7 @@ void pareja::comprobarmano(){
 
 
     if (!jugador2.devolverretirado() && !jugador2.devolvereliminado()){
-        cartas={jugador2.numerocartas[0],jugador2.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        cartas={jugador2.cartastipo1.numerocartas[0],jugador2.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         cartasaux = cartas;
         cartaalta = 0;
         for (unsigned long long i = 0; i < 6; i++) {
@@ -102,7 +132,7 @@ void pareja::comprobarmano(){
 
 
     if (!jugador3.devolverretirado() && !jugador3.devolvereliminado()){
-        cartas={jugador3.numerocartas[0],jugador3.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        cartas={jugador3.cartastipo1.numerocartas[0],jugador3.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         cartasaux = cartas;
         cartaalta = 0;
         for (unsigned long long i = 0; i < 6; i++) {
@@ -161,7 +191,7 @@ void doblepareja::comprobarmano(){
     int s;
     if (!jugador1.devolverretirado() && !jugador1.devolvereliminado()){
         s=0;
-        cartas={jugador1.numerocartas[0],jugador1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        cartas={jugador1.cartastipo1.numerocartas[0],jugador1.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         cartasaux=cartas;
 
         for (unsigned long long i = 0; i < 6; i++) {
@@ -189,7 +219,7 @@ void doblepareja::comprobarmano(){
 
     if (!jugador2.devolverretirado() && !jugador2.devolvereliminado()){
         s=0;
-        cartas={jugador2.numerocartas[0],jugador2.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        cartas={jugador2.cartastipo1.numerocartas[0],jugador2.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         cartasaux = cartas;
         cartaalta = 0;
         for (unsigned long long i = 0; i < 6; i++) {
@@ -217,7 +247,7 @@ void doblepareja::comprobarmano(){
 
     if (!jugador3.devolverretirado() && !jugador3.devolvereliminado()){
         s=0;
-        cartas={jugador3.numerocartas[0],jugador3.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        cartas={jugador3.cartastipo1.numerocartas[0],jugador3.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         cartasaux = cartas;
         cartaalta = 0;
         for (unsigned long long i = 0; i < 6; i++) {
@@ -244,6 +274,9 @@ void doblepareja::comprobarmano(){
 
 trio::trio(){
     valor=40;
+    trioj1 = false;
+    trioj2 = false;
+    trioj3 = false;
 }
 void trio::comprobarmano(){
     vector<int>cartas{7};
@@ -252,7 +285,7 @@ void trio::comprobarmano(){
     int iguales;
     int aux;
     if (!jugador1.devolverretirado() && !jugador1.devolvereliminado()){
-        cartas={jugador1.numerocartas[0],jugador1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        cartas={jugador1.cartastipo1.numerocartas[0],jugador1.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         cartasaux=cartas;
         qDebug("Las cartas a comparar son %d %d %d %d %d %d %d",cartas[0],cartas[1],cartas[2],cartas[3],cartas[4],cartas[5],cartas[6]);
 
@@ -279,8 +312,8 @@ void trio::comprobarmano(){
 
 
 
-    if (!jugador2.devolverretirado() && !jugador3.devolvereliminado()){
-        cartas={jugador2.numerocartas[0],jugador2.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+    if (!jugador2.devolverretirado() && !jugador2.devolvereliminado()){
+        cartas={jugador2.cartastipo1.numerocartas[0],jugador2.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         cartasaux=cartas;
         qDebug("Las cartas a comparar son %d %d %d %d %d %d %d",cartas[0],cartas[1],cartas[2],cartas[3],cartas[4],cartas[5],cartas[6]);
         cartaalta = 0;
@@ -309,7 +342,7 @@ void trio::comprobarmano(){
 
 
     if (!jugador3.devolverretirado() && !jugador3.devolvereliminado()){
-        cartas={jugador3.numerocartas[0],jugador3.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        cartas={jugador3.cartastipo1.numerocartas[0],jugador3.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         cartasaux=cartas;
         qDebug("Las cartas a comparar son %d %d %d %d %d %d %d",cartas[0],cartas[1],cartas[2],cartas[3],cartas[4],cartas[5],cartas[6]);
         cartaalta = 0;
@@ -339,11 +372,105 @@ void trio::comprobarmano(){
 
 }
 
+
+color::color(){
+    valor = 50;
+}
+
+void color::comprobarmano(){
+    vector<QString>cartas{7};
+    vector<QString> cartasaux;
+    vector<int> numeros;
+    int cartaalta = 0;
+    int iguales;
+    int aux;
+    if (!jugador1.devolverretirado() && !jugador1.devolvereliminado()){
+        cartas={jugador1.cartastipo1.tipocartas[0],jugador1.cartastipo1.tipocartas[1],mesa1.tipocartas[0],mesa1.tipocartas[1],mesa1.tipocartas[2],mesa1.tipocartas[3],mesa1.tipocartas[4]};
+        cartasaux=cartas;
+        numeros={jugador1.cartastipo1.numerocartas[0],jugador1.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        for (unsigned long long i = 0; i < 6; i++) {
+            iguales = 0;
+            for (unsigned long long j = i + 1; j < 7; j++) {
+                if (cartas[i] == cartasaux[j]){
+                    cartasaux[j] = " ";
+                    iguales += 1;
+                    aux = numeros[i];
+                    if (aux == 1) aux = 14;
+                    if (cartaalta < aux) cartaalta = aux;
+                }
+            }
+            if (iguales >= 4 && jugador1.valor_mano <= valor){
+                jugador1.cartaalta = cartaalta;
+                jugador1.valor_mano = valor;
+                jugador1.nombremano = "color";
+            }
+        }
+    }
+
+
+
+
+    cartaalta = 0;
+    if (!jugador2.devolverretirado() && !jugador2.devolvereliminado()){
+        cartas={jugador2.cartastipo1.tipocartas[0],jugador2.cartastipo1.tipocartas[1],mesa1.tipocartas[0],mesa1.tipocartas[1],mesa1.tipocartas[2],mesa1.tipocartas[3],mesa1.tipocartas[4]};
+        cartasaux=cartas;
+        numeros={jugador2.cartastipo1.numerocartas[0],jugador2.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        for (unsigned long long i = 0; i < 6; i++) {
+            iguales = 0;
+            for (unsigned long long j = i + 1; j < 7; j++) {
+                if (cartas[i] == cartasaux[j]){
+                    cartasaux[j] = " ";
+                    iguales += 1;
+                    aux = numeros[i];
+                    if (aux == 1) aux = 14;
+                    if (cartaalta < aux) cartaalta = aux;
+                }
+            }
+            if (iguales >= 4 && jugador2.valor_mano <= valor){
+                jugador2.cartaalta = cartaalta;
+                jugador2.valor_mano = valor;
+                jugador2.nombremano = "color";
+            }
+        }
+    }
+
+
+
+
+    cartaalta = 0;
+    if (!jugador3.devolverretirado() && !jugador3.devolvereliminado()){
+        cartas={jugador3.cartastipo1.tipocartas[0],jugador3.cartastipo1.tipocartas[1],mesa1.tipocartas[0],mesa1.tipocartas[1],mesa1.tipocartas[2],mesa1.tipocartas[3],mesa1.tipocartas[4]};
+        cartasaux=cartas;
+        numeros={jugador3.cartastipo1.numerocartas[0],jugador3.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        for (unsigned long long i = 0; i < 6; i++) {
+            iguales = 0;
+            for (unsigned long long j = i + 1; j < 7; j++) {
+                if (cartas[i] == cartasaux[j]){
+                    cartasaux[j] = " ";
+                    iguales += 1;
+                    aux = numeros[i];
+                    if (aux == 1) aux = 14;
+                    if (cartaalta < aux) cartaalta = aux;
+                }
+            }
+            if (iguales >= 4 && jugador3.valor_mano <= valor){
+                jugador3.cartaalta = cartaalta;
+                jugador3.valor_mano = valor;
+                jugador3.nombremano = "color";
+            }
+        }
+    }
+}
+
+
 full::full(){
-    valor=50;
+    valor=55;
 }
 
 void full::comprobarmano(){
+    if(trio::trioj1) qDebug("SI");
+    else qDebug("NO");
+    if (trio::trioj1) qDebug("NO");
     if (trio::trioj1==true && pareja::parejaj1==true){
         jugador1.valor_mano = valor;
         jugador1.nombremano = "full";
@@ -369,7 +496,7 @@ void poker::comprobarmano(){
     int iguales;
     int aux;
     if (!jugador1.devolverretirado() && !jugador1.devolvereliminado()){
-        cartas={jugador1.numerocartas[0],jugador1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        cartas={jugador1.cartastipo1.numerocartas[0],jugador1.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         cartasaux=cartas;
         qDebug("Las cartas a comparar son %d %d %d %d %d %d %d",cartas[0],cartas[1],cartas[2],cartas[3],cartas[4],cartas[5],cartas[6]);
 
@@ -395,8 +522,8 @@ void poker::comprobarmano(){
 
 
 
-    if (!jugador2.devolverretirado() && !jugador3.devolvereliminado()){
-        cartas={jugador2.numerocartas[0],jugador2.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+    if (!jugador2.devolverretirado() && !jugador2.devolvereliminado()){
+        cartas={jugador2.cartastipo1.numerocartas[0],jugador2.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         cartasaux=cartas;
         qDebug("Las cartas a comparar son %d %d %d %d %d %d %d",cartas[0],cartas[1],cartas[2],cartas[3],cartas[4],cartas[5],cartas[6]);
         cartaalta = 0;
@@ -424,7 +551,7 @@ void poker::comprobarmano(){
 
 
     if (!jugador3.devolverretirado() && !jugador3.devolvereliminado()){
-        cartas={jugador3.numerocartas[0],jugador3.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        cartas={jugador3.cartastipo1.numerocartas[0],jugador3.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         cartasaux=cartas;
         qDebug("Las cartas a comparar son %d %d %d %d %d %d %d",cartas[0],cartas[1],cartas[2],cartas[3],cartas[4],cartas[5],cartas[6]);
         cartaalta = 0;
@@ -461,7 +588,7 @@ void escalera::comprobarmano(){
     int cartaalta=0;
     int hay_escalera=0;
     if (!jugador1.devolverretirado() && !jugador1.devolvereliminado()){
-        cartas={jugador1.numerocartas[0],jugador1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        cartas={jugador1.cartastipo1.numerocartas[0],jugador1.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         for (unsigned long long k = 0; k < 7; k++){
             if (cartas[k]==1){
                 cartas[k]=14;
@@ -499,7 +626,7 @@ void escalera::comprobarmano(){
 
 
     if (!jugador2.devolverretirado() && !jugador2.devolvereliminado()){
-        cartas={jugador2.numerocartas[0],jugador2.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        cartas={jugador2.cartastipo1.numerocartas[0],jugador2.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         for (unsigned long long k = 0; k < 7; k++){
             if (cartas[k]==1){
                 cartas[k]=14;
@@ -538,7 +665,7 @@ void escalera::comprobarmano(){
 
 
     if (!jugador3.devolverretirado() && !jugador3.devolvereliminado()){
-        cartas={jugador3.numerocartas[0],jugador3.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        cartas={jugador3.cartastipo1.numerocartas[0],jugador3.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         for (unsigned long long k = 0; k < 7; k++){
             if (cartas[k]==1){
                 cartas[k]=14;

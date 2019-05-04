@@ -84,25 +84,25 @@ void jugador::sumardinero(int bote){
     dinero = dinero + bote;
 }
 
-void jugador::numeroytipocartas(){
-    int aux=cartas[1];
+//void jugador::numeroytipocartas(){
+//    int aux=cartas[1];
 
-    infodecarta(cartas[0]);
-    numerocartas[0]=numero;
-    tipocartas[0]=tipo;
-    // QString num=QString::number(numero);
-    // qDebug(num.toLatin1());
-    // qDebug(tipo.toLatin1());
+//    infodecarta(cartas[0]);
+//    numerocartas[0]=numero;
+//    tipocartas[0]=tipo;
+//    // QString num=QString::number(numero);
+//    // qDebug(num.toLatin1());
+//    // qDebug(tipo.toLatin1());
 
 
-    infodecarta(aux);
-    numerocartas[1]=numero;
-    tipocartas[1]=tipo;
-    // num=QString::number(numero);
-    // qDebug(num.toLatin1());
-    // qDebug(tipo.toLatin1());
+//    infodecarta(aux);
+//    numerocartas[1]=numero;
+//    tipocartas[1]=tipo;
+//    // num=QString::number(numero);
+//    // qDebug(num.toLatin1());
+//    // qDebug(tipo.toLatin1());
 
-}
+//}
 
 void jugador::reset_variables(){
     apuesta = 0;

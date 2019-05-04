@@ -17,6 +17,11 @@ public:
 };
 
 #endif // MANOS_H
+class cartaalta: public manos
+{
+public:
+    void comprobarmano();
+};
 
 class pareja: public manos
 {
@@ -64,6 +69,7 @@ private:
 class color: public manos
 {
 public:
+    color();
     void comprobarmano();
 private:
     int valor;

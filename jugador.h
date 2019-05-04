@@ -2,7 +2,6 @@
 #define JUGADOR_H
 
 #include <iostream>
-#include <vector>
 #include <QString>
 #include <time.h>
 #include <cartastipo.h>
@@ -26,9 +25,10 @@ public:
     void sumardinero(int bote);
     void reset_variables();
     void retirarse();
-    void numeroytipocartas();
-    vector <int> numerocartas{2};
-    vector <QString> tipocartas{2};
+//    void numeroytipocartas();
+//    vector <int> numerocartas{2};
+//    vector <QString> tipocartas{2};
+    cartastipo cartastipo1;
     QString nombremano;
     int cartaalta;
     int valor_mano;
