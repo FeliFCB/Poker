@@ -96,6 +96,21 @@ private:
 class escaleradecolor: public color, public escalera
 {
 public:
+    escaleradecolor();
+    void comprobarmano();
+    bool cartaaltaas1;
+    bool cartaaltaas2;
+    bool cartaaltaas3;
+
+
+
+private:
+    int valor;
+};
+class escalerareal: public escaleradecolor
+{
+public:
+    escalerareal();
     void comprobarmano();
 private:
     int valor;

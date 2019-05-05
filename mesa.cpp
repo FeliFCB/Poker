@@ -130,12 +130,24 @@ void mesa::numeroytipocartas(){
     QString num1=QString::number(cartas[4]);
     qDebug(num1.toLatin1());
     // int aux=cartas[4];
+    int numero;
+    QString tipo;
 
     unsigned int i=0;
     while (i<5) {
-
-
-    infodecarta(cartas[i]);
+        if(cartas[i]<14){
+            numero=cartas[i];
+            tipo="corazones";
+        }else if (cartas[i]<27) {
+            numero=cartas[i]-13;
+            tipo="picas";
+        }else if (cartas[i]<40) {
+            numero=cartas[i]-26;
+            tipo="diamantes";
+        }else if (cartas[i]<53) {
+            numero=cartas[i]-39;
+            tipo="treboles";
+        }
     numerocartas[i]=numero;
     tipocartas[i]=tipo;
     QString num=QString::number(numero);

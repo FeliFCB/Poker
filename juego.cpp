@@ -1034,6 +1034,7 @@ void juego::turnosiguiente(){
                 color color1;
                 full full1;
                 poker poker1;
+                escalerareal escalerareal1;
                 cartaalta1.comprobarmano();
                 full1.pareja::comprobarmano();
                 doblepareja1.comprobarmano();
@@ -1042,6 +1043,8 @@ void juego::turnosiguiente(){
                 color1.comprobarmano();
                 full1.comprobarmano();
                 poker1.comprobarmano();
+                escalerareal1.escaleradecolor::comprobarmano();
+                escalerareal1.comprobarmano();
 
                 if (jugador1.devolvereliminado() || jugador1.devolverretirado()){
                     if (jugador2.valor_mano > jugador3.valor_mano || (jugador2.valor_mano == jugador3.valor_mano && jugador2.cartaalta > jugador3.cartaalta)){

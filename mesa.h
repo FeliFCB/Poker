@@ -7,7 +7,7 @@
 using namespace std;
 
 
-class mesa: public cartastipo
+class mesa
 {
 public:
     mesa();

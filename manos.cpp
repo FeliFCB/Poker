@@ -390,11 +390,12 @@ void color::comprobarmano(){
         numeros={jugador1.cartastipo1.numerocartas[0],jugador1.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         for (unsigned long long i = 0; i < 6; i++) {
             iguales = 0;
+            cartaalta = numeros[i];
             for (unsigned long long j = i + 1; j < 7; j++) {
                 if (cartas[i] == cartasaux[j]){
                     cartasaux[j] = " ";
                     iguales += 1;
-                    aux = numeros[i];
+                    aux = numeros[j];
                     if (aux == 1) aux = 14;
                     if (cartaalta < aux) cartaalta = aux;
                 }
@@ -417,11 +418,12 @@ void color::comprobarmano(){
         numeros={jugador2.cartastipo1.numerocartas[0],jugador2.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         for (unsigned long long i = 0; i < 6; i++) {
             iguales = 0;
+            cartaalta = numeros[i];
             for (unsigned long long j = i + 1; j < 7; j++) {
                 if (cartas[i] == cartasaux[j]){
                     cartasaux[j] = " ";
                     iguales += 1;
-                    aux = numeros[i];
+                    aux = numeros[j];
                     if (aux == 1) aux = 14;
                     if (cartaalta < aux) cartaalta = aux;
                 }
@@ -444,11 +446,12 @@ void color::comprobarmano(){
         numeros={jugador3.cartastipo1.numerocartas[0],jugador3.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         for (unsigned long long i = 0; i < 6; i++) {
             iguales = 0;
+            cartaalta = numeros[i];
             for (unsigned long long j = i + 1; j < 7; j++) {
                 if (cartas[i] == cartasaux[j]){
                     cartasaux[j] = " ";
                     iguales += 1;
-                    aux = numeros[i];
+                    aux = numeros[j];
                     if (aux == 1) aux = 14;
                     if (cartaalta < aux) cartaalta = aux;
                 }
@@ -659,6 +662,7 @@ void escalera::comprobarmano(){
             jugador2.cartaalta = cartaalta;
             jugador2.valor_mano = valor;
             jugador2.nombremano = "escalera";
+
         }
     }
 
@@ -698,7 +702,190 @@ void escalera::comprobarmano(){
             jugador3.cartaalta = cartaalta;
             jugador3.valor_mano = valor;
             jugador3.nombremano = "escalera";
+
         }
+    }
+
+}
+escaleradecolor::escaleradecolor(){
+    valor=65;
+    cartaaltaas1=false;
+    cartaaltaas2=false;
+    cartaaltaas3=false;
+}
+
+void escaleradecolor::comprobarmano(){
+    vector<int>cartas{7};
+    vector<int>escaleramasalta{5};
+    vector<int>escalera{5};
+    vector<QString>cartaspalo{7};
+    int s;
+    unsigned long long pos;
+    int cartaalta=0;
+    int hay_escalera=0;
+    if (!jugador1.devolverretirado() && !jugador1.devolvereliminado()){
+        cartas={jugador1.cartastipo1.numerocartas[0],jugador1.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        cartaspalo={jugador1.cartastipo1.tipocartas[0],jugador1.cartastipo1.tipocartas[1],mesa1.tipocartas[0],mesa1.tipocartas[1],mesa1.tipocartas[2],mesa1.tipocartas[3],mesa1.tipocartas[4]};
+
+        for (unsigned long long k = 0; k < 7; k++){
+            if (cartas[k]==1){
+                cartas[k]=14;
+            }
+        }
+        for (unsigned long long i = 0; i < 7; i++){
+            s=1;
+            escalera={0,0,0,0,0};
+            escalera[0]=cartas[i];
+            for (unsigned long long j = 0; j < 7; j++){
+                if(((cartas[i]==cartas[j]-1) || (cartas[i]==cartas[j]-2)||(cartas[i]==cartas[j]-3) || (cartas[i]==cartas[j]-4)) && (cartaspalo[i]==cartaspalo[j])){
+                    pos=cartas[j]-cartas[i];
+                    if(escalera[pos]==0){
+                        escalera[pos]=cartas[j];
+                        s+=1;
+                    }
+                }
+            }
+
+            if(s>=5 && escalera[4]>cartaalta){
+                escaleramasalta=escalera;
+                cartaalta=escalera[4];
+                hay_escalera=1;
+
+            }
+        }
+        if ( hay_escalera== 1 && jugador1.valor_mano < valor){
+            jugador1.cartaalta = cartaalta;
+            jugador1.valor_mano = valor;
+            jugador1.nombremano = "escalera de color ";
+            if (cartaalta==14){
+                cartaaltaas1=true;
+            }
+
+        }
+    }
+
+
+
+
+    if (!jugador2.devolverretirado() && !jugador2.devolvereliminado()){
+        cartas={jugador2.cartastipo1.numerocartas[0],jugador2.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        cartaspalo={jugador2.cartastipo1.tipocartas[0],jugador2.cartastipo1.tipocartas[1],mesa1.tipocartas[0],mesa1.tipocartas[1],mesa1.tipocartas[2],mesa1.tipocartas[3],mesa1.tipocartas[4]};
+
+        for (unsigned long long k = 0; k < 7; k++){
+            if (cartas[k]==1){
+                cartas[k]=14;
+            }
+        }
+        cartaalta=0;
+        hay_escalera=0;
+        for (unsigned long long i = 0; i < 7; i++){
+            s=1;
+            escalera={0,0,0,0,0};
+            escalera[0]=cartas[i];
+            for (unsigned long long j = 0; j < 7; j++){
+                if(((cartas[i]==cartas[j]-1) || (cartas[i]==cartas[j]-2)||(cartas[i]==cartas[j]-3) || (cartas[i]==cartas[j]-4)) && (cartaspalo[i]==cartaspalo[j])){
+                    pos=cartas[j]-cartas[i];
+                    if(escalera[pos]==0){
+                        escalera[pos]=cartas[j];
+                        s+=1;
+                    }
+                }
+            }
+
+            if(s>=5 && escalera[4]>cartaalta){
+                escaleramasalta=escalera;
+                cartaalta=escalera[4];
+                hay_escalera=1;
+
+            }
+        }
+        if ( hay_escalera== 1 && jugador2.valor_mano < valor){
+            jugador2.cartaalta = cartaalta;
+            jugador2.valor_mano = valor;
+            jugador2.nombremano = "escalera de color";
+            if (cartaalta==14){
+                cartaaltaas2=true;
+            }
+        }
+    }
+
+
+
+    if (!jugador3.devolverretirado() && !jugador3.devolvereliminado()){
+        cartas={jugador3.cartastipo1.numerocartas[0],jugador3.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
+        cartaspalo={jugador3.cartastipo1.tipocartas[0],jugador3.cartastipo1.tipocartas[1],mesa1.tipocartas[0],mesa1.tipocartas[1],mesa1.tipocartas[2],mesa1.tipocartas[3],mesa1.tipocartas[4]};
+        for (unsigned long long k = 0; k < 7; k++){
+            if (cartas[k]==1){
+                cartas[k]=14;
+            }
+        }
+        cartaalta=0;
+        hay_escalera=0;
+        for (unsigned long long i = 0; i < 7; i++){
+            s=1;
+            escalera={0,0,0,0,0};
+            escalera[0]=cartas[i];
+            for (unsigned long long j = 0; j < 7; j++){
+                if(((cartas[i]==cartas[j]-1) || (cartas[i]==cartas[j]-2)||(cartas[i]==cartas[j]-3) || (cartas[i]==cartas[j]-4)) && (cartaspalo[i]==cartaspalo[j])){
+                    pos=cartas[j]-cartas[i];
+                    if(escalera[pos]==0){
+                        escalera[pos]=cartas[j];
+                        s+=1;
+                    }
+                }
+            }
+
+            if(s>=5 && escalera[4]>cartaalta){
+                escaleramasalta=escalera;
+                cartaalta=escalera[4];
+                hay_escalera=1;
+
+            }
+        }
+        if ( hay_escalera== 1 && jugador3.valor_mano < valor){
+            jugador3.cartaalta = cartaalta;
+            jugador3.valor_mano = valor;
+            jugador3.nombremano = "escalera de color";
+            if (cartaalta==14){
+                cartaaltaas3=true;
+            }
+
+        }
+    }
+
+
+}
+
+escalerareal::escalerareal(){
+    valor=70;
+}
+
+void escalerareal::comprobarmano(){
+
+    if (cartaaltaas1){
+        jugador1.valor_mano = valor;
+        jugador1.nombremano = "escalera real";
+        jugador1.cartaalta=14;
+        cartaaltaas1=false;
+    }
+
+    if (cartaaltaas2){
+        jugador2.valor_mano = valor;
+        jugador2.nombremano = "escalera real";
+        jugador2.cartaalta=14;
+        cartaaltaas2=false;
+
+
+    }
+
+    if (cartaaltaas3){
+        jugador3.valor_mano = valor;
+        jugador3.nombremano = "escalera real";
+        jugador3.cartaalta=14;
+        cartaaltaas3=false;
+
+
+
     }
 
 }
