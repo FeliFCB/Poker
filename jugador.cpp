@@ -109,7 +109,7 @@ void jugador::reset_variables(){
     cartas[0] = 0;
     cartas[1] = 0;
     retirado = false;
-    if (dinero == 0) eliminado = true;
+    if (dinero <= 0) eliminado = true;
     valor_mano = 0;
     cartaalta = 0;
     nombremano = "carta alta";

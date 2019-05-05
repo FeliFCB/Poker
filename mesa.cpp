@@ -137,16 +137,16 @@ void mesa::numeroytipocartas(){
     while (i<5) {
         if(cartas[i]<14){
             numero=cartas[i];
-            tipo="corazones";
+            tipo="\u2665";
         }else if (cartas[i]<27) {
             numero=cartas[i]-13;
-            tipo="picas";
+            tipo="\u2660";
         }else if (cartas[i]<40) {
             numero=cartas[i]-26;
-            tipo="diamantes";
+            tipo="\u2666";
         }else if (cartas[i]<53) {
             numero=cartas[i]-39;
-            tipo="treboles";
+            tipo="\u2663";
         }
     numerocartas[i]=numero;
     tipocartas[i]=tipo;

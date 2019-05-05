@@ -93,7 +93,7 @@ private:
     int valor;
 };
 
-class escaleradecolor: public color, public escalera
+class escaleradecolor
 {
 public:
     escaleradecolor();
