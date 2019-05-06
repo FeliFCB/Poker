@@ -126,9 +126,7 @@ int mesa::sumarturno(){
 
 
 void mesa::numeroytipocartas(){
-    qDebug("abierto");
     QString num1=QString::number(cartas[4]);
-    qDebug(num1.toLatin1());
     // int aux=cartas[4];
     int numero;
     QString tipo;
@@ -151,8 +149,6 @@ void mesa::numeroytipocartas(){
     numerocartas[i]=numero;
     tipocartas[i]=tipo;
     QString num=QString::number(numero);
-    qDebug(num.toLatin1());
-    qDebug(tipo.toLatin1());
     i+=1;
 }
 

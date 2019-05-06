@@ -952,7 +952,23 @@ void juego::turnosiguiente(){
         jugador2.reset_variables();
         jugador3.reset_variables();
         mesa1.reset_variables();
-        turnoinicial();
+        if(jugador1.devolvereliminado() && jugador2.devolvereliminado()){
+            QMessageBox::information(this,"Mensaje","Ha ganado " +jugador3.devolvernombre()+"\n¡ENHORABUENA!");
+
+                close();
+        }
+        else if(jugador1.devolvereliminado() && jugador3.devolvereliminado()){
+            QMessageBox::information(this,"Mensaje","Ha ganado " +jugador2.devolvernombre()+"\n¡ENHORABUENA!");
+                close();
+        }
+        else if(jugador2.devolvereliminado() && jugador3.devolvereliminado()){
+            QMessageBox::information(this,"Mensaje","Ha ganado " +jugador1.devolvernombre()+"\n¡ENHORABUENA!");
+                close();
+        }else {
+
+
+            turnoinicial();
+            }
     }
     else if ((jugador1.devolvereliminado() || jugador1.devolverretirado()) && (jugador3.devolvereliminado() || jugador3.devolverretirado())){
         QMessageBox::information(this,"Mensaje",jugador2.devolvernombre() + " gana los " + QString::number(mesa1.devolverbote()) + "€");
@@ -961,7 +977,23 @@ void juego::turnosiguiente(){
         jugador2.reset_variables();
         jugador3.reset_variables();
         mesa1.reset_variables();
-        turnoinicial();
+        if(jugador1.devolvereliminado() && jugador2.devolvereliminado()){
+            QMessageBox::information(this,"Mensaje","Ha ganado " +jugador3.devolvernombre()+"\n¡ENHORABUENA!");
+
+                close();
+        }
+        else if(jugador1.devolvereliminado() && jugador3.devolvereliminado()){
+            QMessageBox::information(this,"Mensaje","Ha ganado " +jugador2.devolvernombre()+"\n¡ENHORABUENA!");
+                close();
+        }
+        else if(jugador2.devolvereliminado() && jugador3.devolvereliminado()){
+            QMessageBox::information(this,"Mensaje","Ha ganado " +jugador1.devolvernombre()+"\n¡ENHORABUENA!");
+                close();
+        }else {
+
+
+            turnoinicial();
+            }
     }
     else if ((jugador3.devolvereliminado() || jugador3.devolverretirado()) && (jugador2.devolvereliminado() || jugador2.devolverretirado())){
         QMessageBox::information(this,"Mensaje",jugador1.devolvernombre() + " gana los " + QString::number(mesa1.devolverbote()) + "€");
@@ -970,7 +1002,23 @@ void juego::turnosiguiente(){
         jugador2.reset_variables();
         jugador3.reset_variables();
         mesa1.reset_variables();
-        turnoinicial();
+        if(jugador1.devolvereliminado() && jugador2.devolvereliminado()){
+            QMessageBox::information(this,"Mensaje","Ha ganado " +jugador3.devolvernombre()+"\n¡ENHORABUENA!");
+
+                close();
+        }
+        else if(jugador1.devolvereliminado() && jugador3.devolvereliminado()){
+            QMessageBox::information(this,"Mensaje","Ha ganado " +jugador2.devolvernombre()+"\n¡ENHORABUENA!");
+                close();
+        }
+        else if(jugador2.devolvereliminado() && jugador3.devolvereliminado()){
+            QMessageBox::information(this,"Mensaje","Ha ganado " +jugador1.devolvernombre()+"\n¡ENHORABUENA!");
+                close();
+        }else {
+
+
+            turnoinicial();
+            }
     }
     else{
         int turno = mesa1.sumarturno();
@@ -1133,19 +1181,19 @@ void juego::turnosiguiente(){
                 mesa1.reset_variables();
 
                 if(jugador1.devolvereliminado() && jugador2.devolvereliminado()){
-                    QMessageBox::information(this,"Mensaje","Ha ganado " +jugador3.devolvernombre());
+                    QMessageBox::information(this,"Mensaje","Ha ganado " +jugador3.devolvernombre()+"\n¡ENHORABUENA!");
 
                         close();
                 }
                 else if(jugador1.devolvereliminado() && jugador3.devolvereliminado()){
-                    QMessageBox::information(this,"Mensaje","Ha ganado " +jugador2.devolvernombre());
+                    QMessageBox::information(this,"Mensaje","Ha ganado " +jugador2.devolvernombre()+"\n¡ENHORABUENA!");
                         close();
                 }
                 else if(jugador2.devolvereliminado() && jugador3.devolvereliminado()){
-                    QMessageBox::information(this,"Mensaje","Ha ganado " +jugador1.devolvernombre());
+                    QMessageBox::information(this,"Mensaje","Ha ganado " +jugador1.devolvernombre()+"\n¡ENHORABUENA!");
                         close();
                 }else {
-                    qDebug("turno siguiente");
+
 
                     turnoinicial();
                     }
@@ -1153,9 +1201,6 @@ void juego::turnosiguiente(){
     //            qDebug("El jugador2 tiene de valor de mano %d", jugador2.devolvervalor_mano());
     //            qDebug("El jugador3 tiene de valor de mano %d", jugador3.devolvervalor_mano());
 
-                qDebug("La carta alta del jugador 1 es %d", jugador1.cartaalta);
-                qDebug("La carta alta del jugador 2 es %d", jugador2.cartaalta);
-                qDebug("La carta alta del jugador 3 es %d", jugador3.cartaalta);
 
 
             }

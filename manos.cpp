@@ -78,7 +78,6 @@ void pareja::comprobarmano(){
     if (!jugador1.devolverretirado() && !jugador1.devolvereliminado()){
         cartas={jugador1.cartastipo1.numerocartas[0],jugador1.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         cartasaux=cartas;
-        qDebug("Las cartas a comparar son %d %d %d %d %d %d %d",cartas[0],cartas[1],cartas[2],cartas[3],cartas[4],cartas[5],cartas[6]);
     //    int pareja = 0;
 
         for (unsigned long long i = 0; i < 6; i++) {
@@ -157,7 +156,6 @@ void pareja::comprobarmano(){
         }
     }
 
-    qDebug("La carta alta es %d", cartaalta);
 //    qDebug("El valor de mano que se la ha dado al jugador es %d", jugador1.devolvervalor_mano());
 //    qDebug("El valor de mano que tiene el jugador 1 es %d", jugador1.devolvervalor_mano());
 //    qDebug("El valor de mano que tiene el jugador 2 es %d", jugador2.devolvervalor_mano());
@@ -287,7 +285,6 @@ void trio::comprobarmano(){
     if (!jugador1.devolverretirado() && !jugador1.devolvereliminado()){
         cartas={jugador1.cartastipo1.numerocartas[0],jugador1.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         cartasaux=cartas;
-        qDebug("Las cartas a comparar son %d %d %d %d %d %d %d",cartas[0],cartas[1],cartas[2],cartas[3],cartas[4],cartas[5],cartas[6]);
 
         for (unsigned long long i = 0; i < 6; i++) {
             iguales = 0;
@@ -315,7 +312,6 @@ void trio::comprobarmano(){
     if (!jugador2.devolverretirado() && !jugador2.devolvereliminado()){
         cartas={jugador2.cartastipo1.numerocartas[0],jugador2.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         cartasaux=cartas;
-        qDebug("Las cartas a comparar son %d %d %d %d %d %d %d",cartas[0],cartas[1],cartas[2],cartas[3],cartas[4],cartas[5],cartas[6]);
         cartaalta = 0;
 
         for (unsigned long long i = 0; i < 6; i++) {
@@ -344,7 +340,6 @@ void trio::comprobarmano(){
     if (!jugador3.devolverretirado() && !jugador3.devolvereliminado()){
         cartas={jugador3.cartastipo1.numerocartas[0],jugador3.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         cartasaux=cartas;
-        qDebug("Las cartas a comparar son %d %d %d %d %d %d %d",cartas[0],cartas[1],cartas[2],cartas[3],cartas[4],cartas[5],cartas[6]);
         cartaalta = 0;
 
         for (unsigned long long i = 0; i < 6; i++) {
@@ -471,9 +466,7 @@ full::full(){
 }
 
 void full::comprobarmano(){
-    if(trio::trioj1) qDebug("SI");
-    else qDebug("NO");
-    if (trio::trioj1) qDebug("NO");
+
     if (trio::trioj1==true && pareja::parejaj1==true){
         jugador1.valor_mano = valor;
         jugador1.nombremano = "full";
@@ -501,7 +494,6 @@ void poker::comprobarmano(){
     if (!jugador1.devolverretirado() && !jugador1.devolvereliminado()){
         cartas={jugador1.cartastipo1.numerocartas[0],jugador1.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         cartasaux=cartas;
-        qDebug("Las cartas a comparar son %d %d %d %d %d %d %d",cartas[0],cartas[1],cartas[2],cartas[3],cartas[4],cartas[5],cartas[6]);
 
         for (unsigned long long i = 0; i < 6; i++) {
             iguales = 0;
@@ -528,7 +520,6 @@ void poker::comprobarmano(){
     if (!jugador2.devolverretirado() && !jugador2.devolvereliminado()){
         cartas={jugador2.cartastipo1.numerocartas[0],jugador2.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         cartasaux=cartas;
-        qDebug("Las cartas a comparar son %d %d %d %d %d %d %d",cartas[0],cartas[1],cartas[2],cartas[3],cartas[4],cartas[5],cartas[6]);
         cartaalta = 0;
 
         for (unsigned long long i = 0; i < 6; i++) {
@@ -556,7 +547,6 @@ void poker::comprobarmano(){
     if (!jugador3.devolverretirado() && !jugador3.devolvereliminado()){
         cartas={jugador3.cartastipo1.numerocartas[0],jugador3.cartastipo1.numerocartas[1],mesa1.numerocartas[0],mesa1.numerocartas[1],mesa1.numerocartas[2],mesa1.numerocartas[3],mesa1.numerocartas[4]};
         cartasaux=cartas;
-        qDebug("Las cartas a comparar son %d %d %d %d %d %d %d",cartas[0],cartas[1],cartas[2],cartas[3],cartas[4],cartas[5],cartas[6]);
         cartaalta = 0;
 
         for (unsigned long long i = 0; i < 6; i++) {
